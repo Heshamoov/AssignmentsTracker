@@ -3,6 +3,7 @@ include('Header.php');
 ?>
 
 <head>
+    <script src="js/popover.js"></script>
     <title>Assignments Tracker</title>
 </head>
 <body onload="search()">
@@ -11,19 +12,19 @@ include('Header.php');
     <table id="list"></table>
     
     <div id="showTasks" hidden >
-        <p id='id'></p>
+        <table id='id'></table>
     </div>
 
     <script type="text/javascript">
         function search() {
-            var httpSections = new XMLHttpRequest();
-            httpSections.onreadystatechange = function () {
+            var httpAssignments = new XMLHttpRequest();
+            httpAssignments.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     document.getElementById("list").innerHTML = this.responseText;
                 }
             };
-            httpSections.open("GET", "mysql/search.php", false);
-            httpSections.send();
+            httpAssignments.open("GET", "mysql/search.php", false);
+            httpAssignments.send();
         }
     </script>
 
@@ -57,7 +58,14 @@ include('Header.php');
 
     <script>
         function getTask(id) {
-            document.getElementById("id").innerHTML = id;
+            var httpTitle = new XMLHttpRequest();
+            httpTitle.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                   document.getElementById("id").innerHTML  = this.responseText;
+                }
+            };
+            httpTitle.open("GET", "mysql/titles.php?id=" + id, false);
+            httpTitle.send();
         }
     </script>
 </body>
