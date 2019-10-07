@@ -4,7 +4,7 @@ include ('../config/dbConfig.php');
 
 $sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
         employee_departments.name 'dept', subjects.name 'subject',
-        assignments.title 'title', count(assignments.title) count
+        assignments.title 'title', count(assignments.title) count, assignments.employee_id id
         FROM ((((
             employee_departments
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
@@ -21,11 +21,8 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<tr>
+    echo "<tr class='w3-blue'>
             <th>Employee</th>
-            <th>Position</th>
-            <th>Department</th>
-            <th>Subject</th>
             <th>Title</th>
             <th>Count</th>
         </tr>";
@@ -40,12 +37,9 @@ if ($result->num_rows > 0) {
         else {
             echo "<tr>";
         }
-        echo "<td> " . $row['employee'] . "</td>
-              <td> " . $row['position'] . "</td>
-              <td> " . $row['dept'] . "</td>
-              <td> " . $row['subject'] . "</td>
-              <td> " . $row['title'] . "</td>
-              <td> " . $row['count'] . "</td>
+        echo "<td> $row[employee] </td>
+              <td> $row[position] </td>
+              <td><a data-toggle='popover' id='popoverA'  onmouseenter='getTask($row[id])'> $row[count]</a></td>
             </tr>";
     }
 } else {
