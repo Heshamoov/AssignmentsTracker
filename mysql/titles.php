@@ -3,7 +3,7 @@
 include ('../config/dbConfig.php');
 $id = $_REQUEST["id"];
 
-$sql = "SELECT assignments.title 'title'
+$sql = "SELECT assignments.title 'title', assignments.created_at
         FROM ((((
             employee_departments
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
@@ -13,19 +13,19 @@ $sql = "SELECT assignments.title 'title'
         
         WHERE employees.id = $id";
 
-//echo $sql;
+echo $sql;
     
 $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
     echo "<tr class='w3-blue'>
-            <th>Title</th>
+            <th>Title</th><th>Date</th>
         </tr>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><td> $row[title]</td></tr>";
+        echo "<tr><td> $row[title]</td><td>$row[created_at]</td></tr>";
     }
 } else {
     echo "No Data Found! Try another search.";

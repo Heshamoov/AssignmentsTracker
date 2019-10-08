@@ -1,19 +1,34 @@
 <?php
 include('Header.php');
 ?>
-
 <head>
+<style>
+    .popover {
+        /*max-width: 600px;*/
+    }
+    .popover-title {
+    background-color: #73AD21; 
+    color: #FFFFFF; 
+    font-size: 20px;
+    text-align:center;
+  }
+  
+  /* Popover Body */
+  .popover-content {
+    /*background-color: coral;*/
+    /*color: #FFFFFF;*/
+    font-size: 15px;
+    padding: 25px;
+  }
+</style>
     <script src="js/popover.js"></script>
-    <title>Assignments Tracker</title>
+    <title>InDepth Eye</title>
 </head>
 <body onload="search()">
     <h1 class="w3-center">Assignments Tracker</h1> 
     <br>
-    <table id="list"></table>
-    
-    <div id="showTasks" hidden >
-        <table id='id'></table>
-    </div>
+    <table id='list'></table>
+    <table id='id'></table>
 
     <script type="text/javascript">
         function search() {
@@ -28,32 +43,37 @@ include('Header.php');
         }
     </script>
 
-    <script>
-        $(document).ready(
-                function () {
-                    $('[data-toggle="popover"]').popover({
-                        trigger: "manual", html: true, content: function () {
-                            return $('#showTasks').html();
-                        }
-                    }).on("mouseenter", function ()
-                    {
-                        $(this).popover("show");
-                    }
-                    );
-                });
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover({html:true, animation: true});   
+    });
+        
+//        $(document).ready(
+//                function () {
+//                    $('[data-toggle="popover"]').popover();});
+//                            {
+//                        trigger: "manual", html: true, content: function () {
+//                            return $('#showTasks').html();
+//                        }
+//                    }).on("onclick", function ()
+//                    {
+//                        $(this).popover("show");
+//                    }
+//                    );
+//                });
 
-        $(document).ready(
-                function () {
-                    $('[data-toggle="popover"]').popover({
-                        trigger: "manual", html: true, content: function () {
-                            return $('#showTasks').html();
-                        }
-                    }).on("mouseleave", function ()
-                    {
-                        $(this).popover("hide");
-                    }
-                    );
-                });
+//        $(document).ready(
+//                function () {
+//                    $('[data-toggle="popover"]').popover({
+//                        trigger: "manual", html: true, content: function () {
+//                            return $('#showTasks').html();
+//                        }
+//                    }).on("mouseleave", function ()
+//                    {
+//                        $(this).popover("hide");
+//                    }
+//                    );
+//                });
     </script>
 
     <script>
