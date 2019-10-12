@@ -2,7 +2,7 @@
 
 include ('../config/dbConfig.php');
 
-$sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
+$search = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
         employee_departments.name 'dept', subjects.name 'subject',
         assignments.title 'title', count(assignments.title) count, assignments.employee_id id
         FROM ((((
@@ -16,13 +16,13 @@ $sql = "SELECT employees.first_name 'employee', employee_positions.name 'positio
         ORDER BY `dept`, `count` DESC";
 
 
-//echo $sql;
+// echo $search;
 
-$result = $conn->query($sql);
+$result = $conn->query($search);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<tr style='background-color: #f2f2f2'>
+    echo "<tr class='w3-blue-grey'>
             <th>Employee</th>
             <th>Title</th>
             <th>Count</th>
@@ -47,24 +47,24 @@ if ($result->num_rows > 0) {
         
         WHERE employees.id = $row[id]";
         
-//        echo $pop;
+// echo $pop;
         $popresult = $conn->query($pop);
-        $popmsg = '';
+        $popmsg = "";
         if ($popresult->num_rows > 0) {
             while ($poprow = $popresult->fetch_assoc()) {
+                $checktitle = str_replace("'", "", $poprow['title']);
+                $checktitle = str_replace('"', '', $checktitle);
                 $popmsg = $popmsg . 
-                        '<tr><td>'.$poprow['date'] .' </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
-                        . '<td align=right>'.  $poprow['title'] . '</td></tr>';
+                        "<tr><td> $poprow[date]</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td align=right>$checktitle</td></tr>";
             }
         }
         echo "<td> $row[employee] </td>
               <td> $row[position] </td>
-              <td><a href='#' title=$row[employee] data-toggle='popover' data-content='$popmsg'>$row[count]</a></td>
+              <td><a href='#' title=$row[employee] data-toggle='popover' data-trigger='focus' data-content=' .$popmsg'>$row[count]</a></td>
             </tr>";
     }
 } else {
     echo "No Data Found! Try another search.";
 }
 $conn->close();
-
-//              <td><a data-toggle='popover' id='popoverA'  onmouseenter='getTask($row[id])'> $row[count]</a></td>

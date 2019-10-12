@@ -1,6 +1,7 @@
 <?php
 
 include ('../config/dbConfig.php');
+
 $id = $_REQUEST["id"];
 
 $sql = "SELECT assignments.title 'title', assignments.created_at
@@ -19,9 +20,7 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<tr class='w3-blue'>
-            <th>Title</th><th>Date</th>
-        </tr>";
+    echo "<th>Title</th><th>Date</th>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
