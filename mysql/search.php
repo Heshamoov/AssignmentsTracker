@@ -22,7 +22,7 @@ $result = $conn->query($search);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<tr class='w3-blue-grey'>
+    echo "  <tr class='w3-blue-grey'>
             <th>Employee</th>
             <th>Title</th>
             <th>Count</th>
@@ -61,10 +61,19 @@ if ($result->num_rows > 0) {
         }
         echo "<td> $row[employee] </td>
               <td> $row[position] </td>
-              <td><a href='#' title=$row[employee] data-toggle='popover' data-trigger='focus' data-content=' .$popmsg'>$row[count]</a></td>
+              <td>
+                  <button data-toggle='popover' title='Assignments' data-trigger='focus' onclick='assignments($row[id])'>
+                    $row[count]</button>
+
+              </td>
             </tr>";
     }
 } else {
     echo "No Data Found! Try another search.";
 }
 $conn->close();
+
+
+
+
+ 
