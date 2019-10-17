@@ -22,11 +22,11 @@ $result = $conn->query($search);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "  <tr class='w3-blue-grey'>
+    echo "<thead><tr class='w3-light-grey'>
             <th>Employee</th>
             <th>Title</th>
             <th>Count</th>
-        </tr>";
+        </tr></thead>";
 
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
         echo "<td> $row[employee] </td>
               <td> $row[position] </td>
               <td>
-                  <button data-toggle='popover' title='Assignments' data-trigger='focus' onclick='assignments($row[id])'>
+                  <button class='w3-btn w3-ripple w3-hover-green w3-round-xlarge' data-toggle='popover' title='Assignments' data-trigger='focus' onclick='assignments($row[id])'>
                     $row[count]</button>
 
               </td>

@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         echo "<tr><td>
-                    <button data-toggle='modal' data-target='#assignment' title='Popover' onclick='content($row[id])'>$row[title]</button>
+<button class='w3-button' data-toggle='modal' data-target='#assignment' title='Popover' onclick='content($row[id])'>$row[title]</button>
                 </td>
                 <td>$row[created_at]</td>
               </tr>";

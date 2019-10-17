@@ -1,36 +1,18 @@
 <?php include('Header.php'); ?>
 <head>
-    <script src="js/popover.js"></script>    
-    <style>
-        .popover-title {
-            background-color: #3333ff; 
-            color: #FFFFFF; 
-            font-size: 20px;
-            text-align:center;
-        }
-
-        .popover-content {
-            font-size: 15px;
-            color: black;
-        }
-    </style>
-
+    <script src="js/popover.js"></script>
     <title>InDepth Eye</title>
 </head>
 
 <body onload="search()">
 
-    <h1 class="w3-center">Assignments Tracker</h1>
-
-    <button  data-toggle="popover" title='Popover' data-trigger="focus" onclick="assignments('45')">Level 1</button>
-
-
-    <table id='EmployeesList' class='w3-hoverable w3-centered w3-border'></table>
-    
+    <h1 class="w3-center">Assignments Tracker</h1>   
+    <div class="w3-container">
+        <table id="EmployeesList" class="w3-table-all w3-hoverable" style="width:50%;"></table>
+    </div>
     
     <div id='AssignmentsList'>
-        <button data-toggle="modal" data-target="#assignment" title='Popover'>Share</button>
-        <table id="AssignmentsTable"></table>
+        <table id="AssignmentsTable" class='w3-table-all' style="width:50%;"></table>
     <br>
     
     </div>
@@ -124,6 +106,17 @@
     <!-- Assignment Content -->
     <script type="text/javascript">
         function content(id) {
+            
+            var httpAssignments = new XMLHttpRequest();
+            httpAssignments.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    document.getElementById("title").innerHTML = this.responseText;
+                }
+            };
+            httpAssignments.open("GET", "mysql/title.php?id=" + id, false);
+            httpAssignments.send();
+            
+            
             var httpAssignments = new XMLHttpRequest();
             httpAssignments.onreadystatechange = function () {
                 if (this.readyState === 4) {
