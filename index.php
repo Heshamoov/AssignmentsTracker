@@ -1,6 +1,22 @@
 <?php include('Header.php'); ?>
 <head>
     <script src="js/popover.js"></script>
+    
+    <style>
+    .popover-title {
+        background-color: #3333ff; 
+        color: #FFFFFF; 
+        font-size: 20px;
+        text-align:center;
+    }
+  
+    .popover{
+        font-size: 15px;
+        color: black;
+        max-width: 40%;
+    }
+    </style>
+    
     <title>InDepth Eye</title>
 </head>
 
@@ -12,8 +28,8 @@
     </div>
     
     
-    <div id="AssignmentsList" class="w3-container w3-responsive">
-        <table id="AssignmentsTable" class="w3-table-all w3-large" style="width:100%;"></table>
+    <div id="AssignmentsList" class="w3-container">
+        <table id="AssignmentsTable" class="w3-table w3-large"></table>
     </div>
     
 
