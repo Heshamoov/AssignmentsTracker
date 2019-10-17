@@ -5,22 +5,15 @@
 </head>
 
 <body onload="search()">
-
     <h1 class="w3-center w3-wide">Assignments Tracker</h1>  
     
-    
-    
-    
     <div class="w3-container w3-responsive">
-        <table id="EmployeesList" class="w3-table-all w3-hoverable w3-card-4 w3-large" style="width:30%;"></table>
+        <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large" style="width:30%;"></table>
     </div>
     
     
-    
-    <div id='AssignmentsList'>
-        <table id="AssignmentsTable" class="w3-table-all w3-hoverable w3-card-4 w3-large" style="width:50%;"></table>
-    <br>
-    
+    <div id="AssignmentsList" class="w3-container w3-responsive">
+        <table id="AssignmentsTable" class="w3-table-all w3-large" style="width:100%;"></table>
     </div>
     
 

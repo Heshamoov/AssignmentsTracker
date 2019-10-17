@@ -4,7 +4,7 @@ include ('../config/dbConfig.php');
 
 $id = $_REQUEST["id"];
 
-$sql = "SELECT assignments.id id, assignments.title 'title', assignments.created_at
+$sql = "SELECT assignments.id id, assignments.title 'title', CONVERT(assignments.created_at, Date) 'date'
         FROM ((((
             employee_departments
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
@@ -20,15 +20,20 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<thead><tr><th>Title</th><th>Date</th></tr></thead>";
+    echo "<thead class='w3-black'><tr class='w3-text-black'><th>Title</th><th>Date</th></tr></thead>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><td>
-<button class='w3-button' data-toggle='modal' data-target='#assignment' title='Popover' onclick='content($row[id])'>$row[title]</button>
+        echo "<tr class='w3-text-black'>
+                <td>
+                $row[date]
                 </td>
-                <td>$row[created_at]</td>
-              </tr>";
+                <td>
+                 <button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[id])'>
+                $row[title]
+                </button>
+                </td>
+        </tr>";
     }
 } else {
     echo "No Data Found! Try another search.";

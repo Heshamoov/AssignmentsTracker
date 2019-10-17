@@ -4,7 +4,7 @@ include ('../config/dbConfig.php');
 
 $id = $_REQUEST["id"];
 
-$sql = "SELECT assignments.title 'title', assignments.created_at
+$sql = "SELECT assignments.title 'title', CONVERT(assignments.created_at, Date) 'date'
         FROM ((((
             employee_departments
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><td> $row[title]</td><td>$row[created_at]</td></tr>";
+        echo "<tr><td> $row[title]</td><td>$row[date]</td></tr>";
     }
     echo "</table>";
 } else {
