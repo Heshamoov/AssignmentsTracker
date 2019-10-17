@@ -14,18 +14,20 @@ $sql = "SELECT assignments.title 'title', assignments.created_at
         
         WHERE employees.id = $id";
 
-echo $sql;
+// echo $sql;
+        echo $id;
     
 $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<th>Title</th><th>Date</th>";
+    echo "<table><th>Title</th><th>Date</th>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         echo "<tr><td> $row[title]</td><td>$row[created_at]</td></tr>";
     }
+    echo "</table>";
 } else {
     echo "No Data Found! Try another search.";
 }

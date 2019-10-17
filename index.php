@@ -29,16 +29,10 @@
     
     
     <div id='AssignmentsList'>
-        <h1 id='h1'></h1>
-        <script>
-    document.getElementById("AssignmentsList").onload = function() {assignments(id)};
-    
-    function assignments(id) {
-    document.getElementById("h1").innerHTML = id;
-    };
-    </script>
+        <button data-toggle="modal" data-target="#assignment" title='Popover'>Share</button>
+        <table id="AssignmentsTable"></table>
     <br>
-<!--    <button data-toggle="modal" data-target="#assignment" title='Popover'>Share</button>-->
+    
     </div>
     
 
@@ -47,13 +41,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="title">title</h4>
                 </div>
                 <div class="modal-body">
                     <div id="popover-content" >
                         <form class="form-inline" role="form">
                             <div class="form-group">
-                                <input type="text" placeholder="Name" class="form-control" maxlength="5">                            
+                                <p id="content">Hello</p>                           
                             </div>
                         </form>
                     </div>
@@ -90,14 +84,14 @@
                     html: true,
                     content: function () {
 
-                        return $('#hh2').html();
+                        return $('#assignment').html();
                     }
                 });
 
 
     </script>
 
-    <!-- List of Assignments -->
+    <!-- List of Teachers -->
     <script type="text/javascript">
         function search() {
             var httpAssignments = new XMLHttpRequest();
@@ -110,5 +104,35 @@
             httpAssignments.send();
         }
     </script>
+    
+    <!--List of Assignments-->
+    <script>
+        document.getElementById("AssignmentsList").onload = function() {assignments(id)};
+
+        function assignments(id) {
+            var httpAssignments = new XMLHttpRequest();
+            httpAssignments.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    document.getElementById("AssignmentsTable").innerHTML = this.responseText;
+                }
+            };
+            httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id, false);
+            httpAssignments.send();
+        };
+    </script>    
+    
+    <!-- Assignment Content -->
+    <script type="text/javascript">
+        function content(id) {
+            var httpAssignments = new XMLHttpRequest();
+            httpAssignments.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    document.getElementById("content").innerHTML = this.responseText;
+                }
+            };
+            httpAssignments.open("GET", "mysql/content.php?id=" + id, false);
+            httpAssignments.send();
+        }
+    </script>    
 </body>
 </html>
