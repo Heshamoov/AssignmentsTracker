@@ -20,7 +20,7 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<th>Title</th><th>Date</th>";
+    echo "<thead><tr><th>Title</th><th>Date</th></tr></thead>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {

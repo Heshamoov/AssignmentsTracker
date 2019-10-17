@@ -22,19 +22,18 @@ $result = $conn->query($search);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<thead><tr class='w3-light-grey'>
-            <th>Employee</th>
-            <th>Title</th>
-            <th>Count</th>
-        </tr></thead>";
+    
 
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         if ($row['dept'] !== $First_line) {
-            echo "<tr class='w3-green'>";
+            echo "<thead><tr class='w3-light-grey'>
+                    <th colspan=2 class='w3-center'>$row[dept]</th>
+                </tr></thead>";
+            echo "<tr class=' w3-text-green w3-hover-green w3-white'>";
             $First_line = $row['dept'];
         } else {
-            echo "<tr>";
+            echo "<tr class='w3-hover-green'>";
         }
         
         $pop = "SELECT assignments.title 'title', CONVERT(assignments.created_at, Date) 'date'
@@ -60,9 +59,8 @@ if ($result->num_rows > 0) {
             }
         }
         echo "<td> $row[employee] </td>
-              <td> $row[position] </td>
               <td>
-                  <button class='w3-btn w3-ripple w3-hover-green w3-round-xlarge' data-toggle='popover' title='Assignments' data-trigger='focus' onclick='assignments($row[id])'>
+                  <button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover' title='Assignments' data-trigger='focus' onclick='assignments($row[id])'>
                     $row[count]</button>
 
               </td>

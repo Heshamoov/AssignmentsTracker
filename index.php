@@ -6,13 +6,19 @@
 
 <body onload="search()">
 
-    <h1 class="w3-center">Assignments Tracker</h1>   
-    <div class="w3-container">
-        <table id="EmployeesList" class="w3-table-all w3-hoverable" style="width:50%;"></table>
+    <h1 class="w3-center w3-wide">Assignments Tracker</h1>  
+    
+    
+    
+    
+    <div class="w3-container w3-responsive">
+        <table id="EmployeesList" class="w3-table-all w3-hoverable w3-card-4 w3-large" style="width:30%;"></table>
     </div>
     
+    
+    
     <div id='AssignmentsList'>
-        <table id="AssignmentsTable" class='w3-table-all' style="width:50%;"></table>
+        <table id="AssignmentsTable" class="w3-table-all w3-hoverable w3-card-4 w3-large" style="width:50%;"></table>
     <br>
     
     </div>
