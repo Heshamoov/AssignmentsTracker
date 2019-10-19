@@ -24,7 +24,7 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<thead class='w3-black'><tr class='w3-text-black'><th>Title</th><th>Date</th><th>Grade</th></tr></thead>";
+    echo "<thead class='w3-black'><tr class='w3-text-black'><th>Date</th><th>Grade</th><th style='text-align: center'>Title</th></tr></thead>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
@@ -32,12 +32,13 @@ if ($result->num_rows > 0) {
                 <td>
                 $row[date]
                 </td>
-                <td>
-                 <button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[id])'>
+                <td align='left'>$row[course]-$row[section]</td>
+                <td style='text-align: right;'>
+<button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[id])'>
                 $row[title]
                 </button>
                 </td>
-                <td>$row[course]-$row[section]</td>
+                
         </tr>";
     }
 } else {

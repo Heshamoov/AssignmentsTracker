@@ -11,9 +11,13 @@
     }
   
     .popover{
-        font-size: 15px;
         color: black;
         max-width: 40%;
+    }
+    p{
+        font-size: 20px;
+        text-align: center;
+        font-family: arial;
     }
     </style>
     
@@ -34,28 +38,27 @@
     
 
     <div class="modal fade" id="assignment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="title">title</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="popover-content" >
-                        <form class="form-inline" role="form">
-                            <div class="form-group">
-                                <p id="content">Hello</p>                           
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" onclick="EmailToSomeOne();">Send</button>
-                </div>
-            </div>
-        </div>
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <table id="title" class="w3-table-all"></table>
     </div>
-
+    <div class="modal-body">
+    <div id="popover-content">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <p id="content">Hello</p> 
+        </div>
+    </form>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" onclick="EmailToSomeOne();">Send</button>
+    </div>
+    </div>
+    </div>
+    </div>
 
     <script>
         $(document).ready(function () {
