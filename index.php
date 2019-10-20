@@ -25,25 +25,25 @@
 </head>
 
 <body onload="search()">
-    <h1 class="w3-center w3-wide">Assignments Tracker</h1>  
-    
-
-        <button class='printBtn' 
+    <div  id='pagetitle' class="w3-container">
+        <h2 class="w3-center w3-wide">Assignments Tracker</h2>  
+        <button id='pp' class='printBtn' 
         onclick="printJS({
-                printable: 'EmployeesList',
+                documentTitle: 'InDepth - Assignments Tracker',
+                printable: 'pagetitle',
                 type: 'html',
-                css: 'styles/pdf.css'
+                targetStyles: ['*'],
+                css: 'styles/pdf.css',
                 })">Print
         </button>
-
-    <div class="w3-container">
+    
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
     </div>
     
     
     <div id="AssignmentsList" class="w3-container">
         <table id="AssignmentsTable" class="w3-table w3-large">
-        
+
         </table>
     </div>
     
