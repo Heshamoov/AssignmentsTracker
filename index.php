@@ -26,7 +26,7 @@
 
 <body onload="search()">
     <div  id='pagetitle' class="w3-container">
-        <h2 class="w3-center w3-wide">Assignments Tracker</h2>  
+        <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>  
         <button id='pp' class='printBtn' 
         onclick="printJS({
                 documentTitle: 'InDepth - Assignments Tracker',
@@ -42,9 +42,7 @@
     
     
     <div id="AssignmentsList" class="w3-container">
-        <table id="AssignmentsTable" class="w3-table w3-large">
-
-        </table>
+        <table id="AssignmentsTable" class="w3-table w3-large"></table>
     </div>
     
 
@@ -166,16 +164,5 @@
             httpAssignments.send();
         }
     </script>
-    <script type="text/javascript">
-        function printassignments(id) {
-            printJS({
-                printable: 'EmployeesList',
-                type: 'html',
-                ignoreElements: ['close','print'],
-                targetStyles: '*',
-                css: 'styles/pdf.css'
-            })
-        }
-    </script>  
 </body>
 </html>

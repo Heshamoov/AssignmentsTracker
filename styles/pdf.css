@@ -1,7 +1,11 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
+h2 {
+	font: arial;
+	font-size: 20px;
+	font-weight: normal;
+}
 table  {
     min-width:50%;
     border: 1px solid gray;
@@ -27,4 +31,14 @@ button {
 
 .printBtn {
 	visibility: hidden;
+}
+
+#title {
+	width: 100%;
+}
+#title th {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background-color: #4CAF50;
+  color: white;
 }
