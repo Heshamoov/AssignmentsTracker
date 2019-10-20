@@ -33,16 +33,18 @@
                 printable: 'EmployeesList',
                 type: 'html',
                 css: 'styles/pdf.css'
-                })">
+                })">Print
         </button>
 
-    <div class="w3-container w3-responsive">
+    <div class="w3-container">
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
     </div>
     
     
     <div id="AssignmentsList" class="w3-container">
-        <table id="AssignmentsTable" class="w3-table w3-large"></table>
+        <table id="AssignmentsTable" class="w3-table w3-large">
+        
+        </table>
     </div>
     
 
@@ -163,6 +165,17 @@
             httpAssignments.open("GET", "mysql/content.php?id=" + id, false);
             httpAssignments.send();
         }
-    </script>    
+    </script>
+    <script type="text/javascript">
+        function printassignments(id) {
+            printJS({
+                printable: 'EmployeesList',
+                type: 'html',
+                ignoreElements: ['close','print'],
+                targetStyles: '*',
+                css: 'styles/pdf.css'
+            })
+        }
+    </script>  
 </body>
 </html>

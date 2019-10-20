@@ -19,7 +19,6 @@
         <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
         <script src="https://printjs-4de6.kxcdn.com/print.min.css"></script>
 
-
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
             .w3-bar,h1,button,select {font-family: "Montserrat", sans-serif}

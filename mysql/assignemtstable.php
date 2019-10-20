@@ -24,7 +24,10 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<thead class='w3-black'><tr class='w3-text-black'><th>Date</th><th>Grade</th><th style='text-align: center'>Title</th></tr></thead>";
+    echo  "<thead class='w3-black'><tr class='w3-text-black'><th>Date</th><th>Grade</th><th style='text-align: center'>Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick=printJS({printable:'AssignmentsTable',type:'html',css:'styles/pdf.css'})>
+            Print
+        </button></th></tr></thead>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
