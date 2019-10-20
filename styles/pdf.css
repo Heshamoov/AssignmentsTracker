@@ -1,0 +1,14 @@
+table {
+    width:100%;
+}
+table, th, td {
+    text-align: center;
+}
+p {
+    font-size: 20px;
+    text-align: center;
+}
+
+button {
+	color:red;
+}

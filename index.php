@@ -41,7 +41,7 @@
     <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <table id="title" class="w3-table-all"></table>
     </div>
     <div class="modal-body">
@@ -54,7 +54,17 @@
     </div>
     </div>
     <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" onclick="EmailToSomeOne();">Send</button>
+    <div class="modal-footer">            
+        <button id="print" type="button" class="btn btn-primary btn-sm"
+            onclick="printJS({
+                printable: 'assignment',
+                type: 'html',
+                ignoreElements: ['close','print'],
+                targetStyles: '*',
+                css: 'styles/pdf.css'
+            })">
+        PRINT
+    </button>
     </div>
     </div>
     </div>
