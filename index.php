@@ -27,8 +27,17 @@
 <body onload="search()">
     <h1 class="w3-center w3-wide">Assignments Tracker</h1>  
     
+
+        <button class='printBtn' 
+        onclick="printJS({
+                printable: 'EmployeesList',
+                type: 'html',
+                css: 'styles/pdf.css'
+                })">
+        </button>
+
     <div class="w3-container w3-responsive">
-        <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large" style="width:30%;"></table>
+        <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
     </div>
     
     
