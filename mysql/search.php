@@ -2,18 +2,30 @@
 
 include ('../config/dbConfig.php');
 
+$fromdate = $_REQUEST["fromdate"];
+$todate = $_REQUEST["todate"];
+
 $search = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
         employee_departments.name 'dept', subjects.name 'subject',
-        assignments.title 'title', count(assignments.title) count, assignments.employee_id id
+        assignments.title 'title', count(assignments.title) count, assignments.employee_id id,
+        CONVERT(assignments.created_at, Date) 'date'
         FROM ((((
             employee_departments
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
                     INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id)
                         INNER JOIN assignments ON employees.id = assignments.employee_id)
-                            INNER JOIN subjects ON assignments.subject_id = subjects.id)
+                            INNER JOIN subjects ON assignments.subject_id = subjects.id) ";
+
+if($fromdate !== '' or $todate !== '')
+    $search .= "WHERE  (
+        (STR_TO_DATE(assignments.created_at,'%Y-%m-%d'))
+            BETWEEN
+        (STR_TO_DATE('$fromdate', '%Y-%m-%d')) AND (STR_TO_DATE('$todate', '%Y-%m-%d'))) ";
+
+
         
-        GROUP BY assignments.employee_id
-        ORDER BY `dept`, `count` DESC";
+$search .= "GROUP BY assignments.employee_id
+            ORDER BY `dept`, `count` DESC";
 
 
 // echo $search;
@@ -42,9 +54,17 @@ if ($result->num_rows > 0) {
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
                     INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id)
                         INNER JOIN assignments ON employees.id = assignments.employee_id)
-                            INNER JOIN subjects ON assignments.subject_id = subjects.id)
+                            INNER JOIN subjects ON assignments.subject_id = subjects.id)";
+
+if($fromdate !== '' or $todate !== '')
+    $pop .= "WHERE  ( 
+        (STR_TO_DATE(assignments.created_at,'%Y-%m-%d'))
+            BETWEEN
+        (STR_TO_DATE('$fromdate', '%Y-%m-%d')) AND (STR_TO_DATE('$todate', '%Y-%m-%d'))
+        AND employees.id = $row[id]) ";
+    else        
         
-        WHERE employees.id = $row[id]";
+    $pop .= "WHERE employees.id = $row[id]";
         
 // echo $pop;
         $popresult = $conn->query($pop);
@@ -60,7 +80,7 @@ if ($result->num_rows > 0) {
         }
         echo "<td> $row[employee] </td>
               <td>
-<button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover' data-trigger='focus' onclick='assignments($row[id])'>
+<button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover'  onclick='assignments($row[id],fromdate,todate)'>
                     $row[count]</button>
 
               </td>

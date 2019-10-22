@@ -24,9 +24,10 @@
     <title>InDepth Eye</title>
 </head>
 
-<body onload="search()">
+<body onload="search('','')">
     <div  id='pagetitle' class="w3-container">
-        <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>  
+        <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>
+
         <button id='pp' class='printBtn' 
         onclick="printJS({
                 documentTitle: 'InDepth - Assignments Tracker',
@@ -36,7 +37,35 @@
                 css: 'styles/pdf.css',
                 })">Print
         </button>
-    
+
+
+        <input type="date" id="from" required />
+        <input type="date" id="to" required />
+        <button id="submit">Submit</button>
+<script type="text/javascript">
+var fromdate = todate = '';
+
+    (function() {
+    $('#submit').on('click', function(){
+      var date = new Date($('#from').val());
+      day = date.getDate();
+      month = date.getMonth() + 1;
+      year = date.getFullYear();
+       fromdate = year + '-' + month + '-' + day;
+
+      var date = new Date($('#to').val());
+      day = date.getDate();
+      month = date.getMonth() + 1;
+      year = date.getFullYear();
+       todate = year + '-' + month + '-' + day;
+      
+      search(fromdate, todate);
+    });
+})();
+</script>
+
+
+       
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
     </div>
     
@@ -112,30 +141,30 @@
 
     <!-- List of Teachers -->
     <script type="text/javascript">
-        function search() {
+        function search(fromdate,todate) {
             var httpAssignments = new XMLHttpRequest();
             httpAssignments.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     document.getElementById("EmployeesList").innerHTML = this.responseText;
                 }
             };
-            httpAssignments.open("GET", "mysql/search.php", false);
+            httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
             httpAssignments.send();
         }
     </script>
     
     <!--List of Assignments-->
     <script>
-        document.getElementById("AssignmentsList").onload = function() {assignments(id)};
+        document.getElementById("AssignmentsList").onready = function() {assignments(id,fromdate,todate)};
 
-        function assignments(id) {
+        function assignments(id,fromdate,todate) {
             var httpAssignments = new XMLHttpRequest();
             httpAssignments.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     document.getElementById("AssignmentsTable").innerHTML = this.responseText;
                 }
             };
-            httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id, false);
+            httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
             httpAssignments.send();
         };
     </script>    
