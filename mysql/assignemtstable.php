@@ -6,8 +6,11 @@ $id = $_REQUEST["id"];
 $fromdate = $_REQUEST["fromdate"];
 $todate = $_REQUEST["todate"];
 
-$sql = "SELECT assignments.id id, assignments.title 'title', CONVERT(assignments.created_at, Date) 'date',
-                courses.course_name course, batches.name section
+
+$sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
+        employee_departments.name 'dept', subjects.name 'subject',
+        assignments.title 'title', assignments.employee_id id,
+        CONVERT(assignments.created_at, Date) 'date', courses.course_name 'course', batches.name 'section'
         FROM ((((((
             employee_departments
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
@@ -15,16 +18,11 @@ $sql = "SELECT assignments.id id, assignments.title 'title', CONVERT(assignments
                         INNER JOIN assignments ON employees.id = assignments.employee_id)
                             INNER JOIN subjects ON assignments.subject_id = subjects.id)
                                 INNER JOIN batches ON subjects.batch_id = batches.id)
-                                    INNER JOIN courses ON batches.course_id = courses.id)";
-if($fromdate !== '' or $todate !== '')
-    $sql .= "WHERE  ( 
-        (STR_TO_DATE(assignments.created_at,'%Y-%m-%d'))
-            BETWEEN
-        (STR_TO_DATE('$fromdate', '%Y-%m-%d')) AND (STR_TO_DATE('$todate', '%Y-%m-%d'))
-        AND employees.id = $id) ORDER BY date ";
-    else        
-        
-    $sql .= "WHERE employees.id = $id ORDER BY date";
+                                    INNER JOIN courses ON batches.course_id = courses.id)
+        WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d')
+                BETWEEN
+                '$fromdate' AND '$todate'
+        AND employees.id = $id ORDER BY date";
         
      
 // echo $sql;

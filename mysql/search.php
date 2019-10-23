@@ -14,30 +14,22 @@ $search = "SELECT employees.first_name 'employee', employee_positions.name 'posi
                 INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
                     INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id)
                         INNER JOIN assignments ON employees.id = assignments.employee_id)
-                            INNER JOIN subjects ON assignments.subject_id = subjects.id) ";
-
-if($fromdate !== '' or $todate !== '')
-    $search .= "WHERE  (
-        (STR_TO_DATE(assignments.created_at,'%Y-%m-%d'))
-            BETWEEN
-        (STR_TO_DATE('$fromdate', '%Y-%m-%d')) AND (STR_TO_DATE('$todate', '%Y-%m-%d'))) ";
-
-
-        
-$search .= "GROUP BY assignments.employee_id
-            ORDER BY `dept`, `count` DESC";
+                            INNER JOIN subjects ON assignments.subject_id = subjects.id) 
+        WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d')
+                BETWEEN
+                '$fromdate' AND '$todate'
+        GROUP BY assignments.employee_id
+        ORDER BY `dept`, `count` DESC";
 
 
 // echo $search;
 
-$result = $conn->query($search);
+$searchResult = $conn->query($search);
 
 $rownumber = 1;
-if ($result->num_rows > 0) {
-    
-
+if ($searchResult->num_rows > 0) {
     $First_line = "";
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $searchResult->fetch_assoc()) {
         if ($row['dept'] !== $First_line) {
             echo "<thead><tr class='w3-light-grey'>
                     <th colspan=2 class='w3-center'>$row[dept]</th>
@@ -47,42 +39,11 @@ if ($result->num_rows > 0) {
         } else {
             echo "<tr class='w3-hover-green'>";
         }
-        
-        $pop = "SELECT assignments.title 'title', CONVERT(assignments.created_at, Date) 'date'
-        FROM ((((
-            employee_departments
-                INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
-                    INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id)
-                        INNER JOIN assignments ON employees.id = assignments.employee_id)
-                            INNER JOIN subjects ON assignments.subject_id = subjects.id)";
 
-if($fromdate !== '' or $todate !== '')
-    $pop .= "WHERE  ( 
-        (STR_TO_DATE(assignments.created_at,'%Y-%m-%d'))
-            BETWEEN
-        (STR_TO_DATE('$fromdate', '%Y-%m-%d')) AND (STR_TO_DATE('$todate', '%Y-%m-%d'))
-        AND employees.id = $row[id]) ";
-    else        
-        
-    $pop .= "WHERE employees.id = $row[id]";
-        
-// echo $pop;
-        $popresult = $conn->query($pop);
-        $popmsg = "";
-        if ($popresult->num_rows > 0) {
-            while ($poprow = $popresult->fetch_assoc()) {
-                $checktitle = str_replace("'", "", $poprow['title']);
-                $checktitle = str_replace('"', '', $checktitle);
-                $popmsg = $popmsg . 
-                        "<tr><td> $poprow[date]</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td align=right>$checktitle</td></tr>";
-            }
-        }
         echo "<td> $row[employee] </td>
-              <td>
-<button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover'  onclick='assignments($row[id],fromdate,todate)'>
-                    $row[count]</button>
-
+              <td><button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover'
+                data-trigger='click'
+                onclick='assignments($row[id])'>$row[count]</button>
               </td>
             </tr>";
     }

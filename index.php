@@ -1,7 +1,5 @@
 <?php include('Header.php'); ?>
 <head>
-    <script src="js/popover.js"></script>
-    
     <style>
     .popover-title {
         background-color: #3333ff; 
@@ -24,9 +22,10 @@
     <title>InDepth Eye</title>
 </head>
 
-<body onload="search('','')">
+<body onload="initDate()">
     <div  id='pagetitle' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>
+        <p id="console"></p>
 
         <button id='pp' class='printBtn' 
         onclick="printJS({
@@ -39,31 +38,9 @@
         </button>
 
 
-        <input type="date" id="from" required />
-        <input type="date" id="to" required />
-        <button id="submit">Submit</button>
-<script type="text/javascript">
-var fromdate = todate = '';
-
-    (function() {
-    $('#submit').on('click', function(){
-      var date = new Date($('#from').val());
-      day = date.getDate();
-      month = date.getMonth() + 1;
-      year = date.getFullYear();
-       fromdate = year + '-' + month + '-' + day;
-
-      var date = new Date($('#to').val());
-      day = date.getDate();
-      month = date.getMonth() + 1;
-      year = date.getFullYear();
-       todate = year + '-' + month + '-' + day;
-      
-      search(fromdate, todate);
-    });
-})();
-</script>
-
+        <input type="date" id="from" value="2018-10-20" />
+        <input type="date" id="to"/>
+        <button id="submit" onclick="search()">Submit</button>
 
        
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
@@ -108,6 +85,71 @@ var fromdate = todate = '';
     </div>
     </div>
 
+<script type="text/javascript">
+    function initDate(){
+        let today = new Date().toISOString().substr(0, 10);
+        document.querySelector("#to").value = today;
+        search();
+    }
+
+
+
+    function search() {
+
+        let date = new Date($('#from').val());
+            day = date.getDate();
+            month = date.getMonth() + 1;
+            year = date.getFullYear();
+        let fromdate = year + '-' + month + '-' + day;
+
+
+            date = new Date($('#to').val());
+            day = date.getDate();
+            month = date.getMonth() + 1;
+            year = date.getFullYear();
+        let todate = year + '-' + month + '-' + day;
+
+
+        var httpAssignments = new XMLHttpRequest();
+        httpAssignments.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                document.getElementById("EmployeesList").innerHTML = this.responseText;
+            }
+        };
+        httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
+        httpAssignments.send();
+        }
+
+
+
+    function assignments(id) {
+        let date = new Date($('#from').val());
+            day = date.getDate();
+            month = date.getMonth() + 1;
+            year = date.getFullYear();
+        let fromdate = year + '-' + month + '-' + day;
+
+
+            date = new Date($('#to').val());
+            day = date.getDate();
+            month = date.getMonth() + 1;
+            year = date.getFullYear();
+        let todate = year + '-' + month + '-' + day;
+        
+        var httpAssignments = new XMLHttpRequest();
+        httpAssignments.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                document.getElementById("AssignmentsTable").innerHTML = this.responseText;
+            }
+        };
+        httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
+        httpAssignments.send();
+    };
+</script>    
+
+
+
+
     <script>
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover(
@@ -139,35 +181,9 @@ var fromdate = todate = '';
 
     </script>
 
-    <!-- List of Teachers -->
-    <script type="text/javascript">
-        function search(fromdate,todate) {
-            var httpAssignments = new XMLHttpRequest();
-            httpAssignments.onreadystatechange = function () {
-                if (this.readyState === 4) {
-                    document.getElementById("EmployeesList").innerHTML = this.responseText;
-                }
-            };
-            httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
-            httpAssignments.send();
-        }
-    </script>
-    
-    <!--List of Assignments-->
-    <script>
-        document.getElementById("AssignmentsList").onready = function() {assignments(id,fromdate,todate)};
 
-        function assignments(id,fromdate,todate) {
-            var httpAssignments = new XMLHttpRequest();
-            httpAssignments.onreadystatechange = function () {
-                if (this.readyState === 4) {
-                    document.getElementById("AssignmentsTable").innerHTML = this.responseText;
-                }
-            };
-            httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
-            httpAssignments.send();
-        };
-    </script>    
+    
+
     
     <!-- Assignment Content -->
     <script type="text/javascript">
