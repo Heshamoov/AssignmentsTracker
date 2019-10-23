@@ -31,7 +31,7 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo  "<thead class='w3-black'><tr class='w3-text-black'><th>Date</th><th>Grade</th><th style='text-align: center'>Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    echo  "<thead class='w3-black'><tr class='w3-text-black'><th>#</th><th>Date</th><th>Grade</th><th style='text-align: center'>Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class='printBtn' onclick=printJS({printable:'AssignmentsTable',type:'html',css:'styles/pdf.css'})>
             Print
         </button></th></tr></thead>";
@@ -39,6 +39,7 @@ if ($result->num_rows > 0) {
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         echo "<tr class='w3-text-black'>
+                <td>$rownumber</td>
                 <td>
                 $row[date]
                 </td>
@@ -50,6 +51,7 @@ if ($result->num_rows > 0) {
                 </td>
                 
         </tr>";
+    $rownumber++;
     }
 } else {
     echo "No Data Found! Try another search.";

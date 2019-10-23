@@ -25,23 +25,61 @@
 <body onload="initDate()">
     <div  id='pagetitle' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>
-        <p id="console"></p>
+        <table class="w3-table-all w3-centered w3-card-4">
+            <tr>
+                <td>
+                    <label class="w3-large">Print</label>
+                </td>
+                <td>
+                    <label class="w3-large">Simple Search</label>
+                </td>
+                <td>
+                    <label class="w3-large">From</label>
+                </td>
+                <td>
+                    <label class="w3-large">To</label>
+                </td>
+                <td>
+                    <label class="w3-large">Track</label>
+                </td>
+            </tr>
 
-        <button id='pp' class='printBtn' 
-        onclick="printJS({
-                documentTitle: 'InDepth - Assignments Tracker',
-                printable: 'pagetitle',
-                type: 'html',
-                targetStyles: ['*'],
-                css: 'styles/pdf.css',
-                })">Print
-        </button>
+            <tr>
 
+            <td>
+                <button id='pp' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-print' onclick="printJS({
+                    documentTitle: 'InDepth - Assignments Tracker',
+                    printable: 'pagetitle',
+                    type: 'html',
+                    targetStyles: ['*'],
+                    css: 'styles/pdf.css',
+                })">
+                </button>
+            </td>
+            <td>
 
-        <input type="date" id="from" value="2018-10-20" />
-        <input type="date" id="to"/>
-        <button id="submit" onclick="search()">Submit</button>
+                <button class="w3-button w3-white w3-hover-green w3-border">This Month</button>    ||   
+                <button class="w3-button w3-white w3-hover-green w3-border">This Week</button>
+                    ||
+                <button class="w3-button w3-white w3-border w3-hover-green">Today</button>
+            </td>                
+                
+                <td>
+                    <input class="w3-input" type="date" id="from" value="2018-10-20" />
+                </td>
+                <td>
+                    <input class="w3-input" type="date" id="to"/>
+                </td>
+                <td>
+<button id="submit" class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search"
+                    onclick="search()"></button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
+    <div class="w3-container"><br>
+                    
        
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
     
@@ -131,18 +169,16 @@
         httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
         httpAssignments.send();
 
-        
-            $(document).ready(function () {
-                $('[data-toggle="popover"]').popover(
-                    {
-                        html: true,
-                        content: function () {
-                            return $('#AssignmentsList').html();
-                        }
-                    }).$(".popover").on("click", function () {$(this).popover('hide');});
-            });
-        
-        }
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover(
+            {
+                html: true,
+                content: function () {
+                    return $('#AssignmentsList').html();
+                }
+            }).$(".popover").on("click", function () {$(this).popover('hide');});
+        });    
+    }
 
 
 
