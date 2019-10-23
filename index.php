@@ -44,13 +44,25 @@
 
        
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
+    
+    
+        <div id="AssignmentsList" class="w3-container">
+            <table id="AssignmentsTable" class="w3-table w3-large"></table>
+        </div>
+    
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover(
+                    {
+                        html: true,
+                        content: function () {
+                            return $('#AssignmentsList').html();
+                        }
+                    }).$(".popover").on("click", function () {$(this).popover('hide');});
+            });
+        </script>
+
     </div>
-    
-    
-    <div id="AssignmentsList" class="w3-container">
-        <table id="AssignmentsTable" class="w3-table w3-large"></table>
-    </div>
-    
 
     <div class="modal fade" id="assignment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -118,6 +130,18 @@
         };
         httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
         httpAssignments.send();
+
+        
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover(
+                    {
+                        html: true,
+                        content: function () {
+                            return $('#AssignmentsList').html();
+                        }
+                    }).$(".popover").on("click", function () {$(this).popover('hide');});
+            });
+        
         }
 
 
@@ -145,45 +169,7 @@
         httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
         httpAssignments.send();
     };
-</script>    
-
-
-
-
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="popover"]').popover(
-                    {
-                        html: true,
-                        content: function () {
-                            return $('#AssignmentsList').html();
-                        }
-                    }).$(".popover").on("click", function () {
-                $(this).popover('hide');
-            });
-
-
-        });
-    </script>
-
-    <script>
-
-        $('[data-toggle="popover1"]').popover(
-                {
-
-                    html: true,
-                    content: function () {
-
-                        return $('#assignment').html();
-                    }
-                });
-
-
-    </script>
-
-
-    
-
+</script>
     
     <!-- Assignment Content -->
     <script type="text/javascript">

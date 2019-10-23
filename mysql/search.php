@@ -42,7 +42,7 @@ if ($searchResult->num_rows > 0) {
 
         echo "<td> $row[employee] </td>
               <td><button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover'
-                data-trigger='click'
+                data-trigger='focus'
                 onclick='assignments($row[id])'>$row[count]</button>
               </td>
             </tr>";
