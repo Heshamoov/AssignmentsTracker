@@ -47,7 +47,7 @@
             <tr>
 
             <td>
-                <button id='pp' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-print' onclick="printJS({
+                <button id='pp' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-print w3-xlarge' onclick="printJS({
                     documentTitle: 'InDepth - Assignments Tracker',
                     printable: 'pagetitle',
                     type: 'html',
@@ -58,21 +58,24 @@
             </td>
             <td>
 
-                <button class="w3-button w3-white w3-hover-green w3-border">This Month</button>    ||   
-                <button class="w3-button w3-white w3-hover-green w3-border">This Week</button>
+                <button class="w3-button w3-white w3-hover-green w3-border">
+                    <label>This Month</label></button>
+                    ||   
+                <button class="w3-button w3-white w3-hover-green w3-border">
+                    <label>This Week</label></button>
                     ||
-                <button class="w3-button w3-white w3-border w3-hover-green">Today</button>
+                <button class="w3-button w3-white w3-border w3-hover-green" onclick="today()">
+                    <label>Today</label></button>
             </td>                
                 
                 <td>
-                    <input class="w3-input" type="date" id="from" value="2018-10-20" />
+                    <input class="w3-input w3-large" type="date" id="from" value="2018-10-20" />
                 </td>
                 <td>
-                    <input class="w3-input" type="date" id="to"/>
+                    <input class="w3-input w3-large" type="date" id="to"/>
                 </td>
                 <td>
-<button id="submit" class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search"
-                    onclick="search()"></button>
+<button id="submit" class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge" onclick="search()"></button>
                 </td>
             </tr>
         </table>
@@ -205,6 +208,15 @@
         httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
         httpAssignments.send();
     };
+
+
+
+    function today() {
+        let today = new Date().toISOString().substr(0, 10);
+        document.querySelector("#from").value = today;
+        document.querySelector("#to").value = today;
+        search();        
+    }
 </script>
     
     <!-- Assignment Content -->
