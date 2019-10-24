@@ -25,6 +25,7 @@
 <body onload="initDate()">
     <div  id='pagetitle' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>
+        <label id="out"></label>
         <table class="w3-table-all w3-centered w3-card-4">
             <tr>
                 <td>
@@ -61,7 +62,7 @@
                 <button class="w3-button w3-white w3-hover-green w3-border">
                     <label>This Month</label></button>
                     ||   
-                <button class="w3-button w3-white w3-hover-green w3-border">
+                <button class="w3-button w3-white w3-hover-green w3-border" onclick="week()">
                     <label>This Week</label></button>
                     ||
                 <button class="w3-button w3-white w3-border w3-hover-green" onclick="today()">
@@ -216,6 +217,17 @@
         document.querySelector("#from").value = today;
         document.querySelector("#to").value = today;
         search();        
+    }
+
+    function week() {
+        var curr = new Date; // get current date
+        var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+        var firstday = new Date(curr.setDate(first)).toISOString().substr(0, 10);
+        document.getElementById("out").innerHTML = firstday;
+
+        document.querySelector("#from").value = firstday;
+        
+        search();                
     }
 </script>
     
