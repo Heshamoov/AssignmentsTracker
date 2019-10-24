@@ -25,7 +25,7 @@
 <body onload="initDate()">
     <div  id='pagetitle' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>
-        <label id="out"></label>
+        <label id="out" class="w3-center"></label>
         <table class="w3-table-all w3-centered w3-card-4">
             <tr>
                 <td>
@@ -216,23 +216,26 @@
         let today = new Date().toISOString().substr(0, 10);
         document.querySelector("#from").value = today;
         document.querySelector("#to").value = today;
-        search();        
+        search();
+        document.getElementById("out").innerHTML = "Today " + new Date().toUTCString();
     }
 
     function week() {
         var curr = new Date; // get current date
         var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-        var firstday = new Date(curr.setDate(first)).toISOString().substr(0, 10);
+        document.querySelector("#from").value = new Date(curr.setDate(first)).toISOString().substr(0, 10);
 
-        document.querySelector("#from").value = firstday;
+        document.getElementById("out").innerHTML = "From " + new Date(curr.setDate(first)).toUTCString();
 
         search();                
     }
 
     function getmonth() {
         var date = new Date();
-        var firstday = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
-        document.querySelector("#from").value = firstday;
+        var first = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
+        document.querySelector("#from").value = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
+
+        document.getElementById("out").innerHTML = "From " + new Date(date.getFullYear(), date.getMonth(), 2).toUTCString();
 
         search();
     }
