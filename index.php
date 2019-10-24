@@ -32,7 +32,7 @@
                     <label class="w3-large">Print</label>
                 </td>
                 <td>
-                    <label class="w3-large">Simple Search</label>
+                    <label class="w3-large">Simple Track</label>
                 </td>
                 <td>
                     <label class="w3-large">From</label>
@@ -59,7 +59,7 @@
             </td>
             <td>
 
-                <button class="w3-button w3-white w3-hover-green w3-border">
+                <button class="w3-button w3-white w3-hover-green w3-border" onclick="getmonth()">
                     <label>This Month</label></button>
                     ||   
                 <button class="w3-button w3-white w3-hover-green w3-border" onclick="week()">
@@ -223,13 +223,22 @@
         var curr = new Date; // get current date
         var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
         var firstday = new Date(curr.setDate(first)).toISOString().substr(0, 10);
-        document.getElementById("out").innerHTML = firstday;
 
         document.querySelector("#from").value = firstday;
-        
+
         search();                
     }
+
+    function getmonth() {
+        var date = new Date();
+        var firstday = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
+        document.querySelector("#from").value = firstday;
+
+        search();
+    }
 </script>
+
+
     
     <!-- Assignment Content -->
     <script type="text/javascript">
