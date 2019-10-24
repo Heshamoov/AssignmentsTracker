@@ -17,6 +17,19 @@
         text-align: center;
         font-family: arial;
     }
+
+
+.hero-image {
+  background-image: url("styles/img/logo.jpg");
+  background-color: white;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*background-size: cover;*/
+  /*position: relative;*/
+}    
+
+
     </style>
     
     <title>InDepth Eye</title>
@@ -82,7 +95,7 @@
         </table>
     </div>
 
-    <div class="w3-container"><br>
+    <div class="w3-container hero-image"><br>
                     
        
         <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
