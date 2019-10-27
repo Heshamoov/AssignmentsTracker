@@ -1,287 +1,221 @@
-<!-- Developed By Hesham Alatrash
-     Heshamoov90@Gmail.com -->
+<?php
+session_start();
+if (isset($_SESSION['login']))
+    header('Location: tracker.php');
+?>
 
-<?php include('Header.php'); ?>
+<!doctype html>
 <head>
-    <style>
-    .popover-title {
-        background-color: #3333ff; 
-        color: #FFFFFF; 
-        font-size: 20px;
-        text-align:center;
-    }
-  
-    .popover{
-        color: black;
-        max-width: 40%;
-    }
-    p{
-        font-size: 20px;
-        text-align: center;
-        font-family: arial;
-    }
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://s3.amazonaws.com/api_play/src/js/jquery-2.1.1.min.js"></script> 
+    <script src="https://s3.amazonaws.com/api_play/src/js/vkbeautify.0.99.00.beta.js"></script>
+    <!--===============================================================================================-->  
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
 
-
-.hero-image {
-  background-image: url("styles/img/logo.jpg");
-  background-color: white;
-  height: 600px;
-  background-position: center;
-  background-repeat: no-repeat;
-  /*background-size: cover;*/
-  /*position: relative;*/
-}    
-
-
-    </style>
-    
-    <title>InDepth Eye</title>
-</head>
-
-<body onload="initDate()">
-    <div  id='pagetitle' class="w3-container">
-        <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School</h2>
-        <label id="out" class="w3-center"></label>
-        <table class="w3-table-all w3-centered w3-card-4">
-            <tr>
-                <td>
-                    <label class="w3-large">Print</label>
-                </td>
-                <td>
-                    <label class="w3-large">Simple Track</label>
-                </td>
-                <td>
-                    <label class="w3-large">From</label>
-                </td>
-                <td>
-                    <label class="w3-large">To</label>
-                </td>
-                <td>
-                    <label class="w3-large">Track</label>
-                </td>
-            </tr>
-
-            <tr>
-
-            <td>
-                <button id='pp' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-print w3-xlarge' onclick="printJS({
-                    documentTitle: 'InDepth - Assignments Tracker',
-                    printable: 'pagetitle',
-                    type: 'html',
-                    targetStyles: ['*'],
-                    css: 'styles/pdf.css',
-                })">
-                </button>
-            </td>
-            <td>
-
-                <button class="w3-button w3-white w3-hover-green w3-border" onclick="getmonth()">
-                    <label>This Month</label></button>
-                    ||   
-                <button class="w3-button w3-white w3-hover-green w3-border" onclick="week()">
-                    <label>This Week</label></button>
-                    ||
-                <button class="w3-button w3-white w3-border w3-hover-green" onclick="today()">
-                    <label>Today</label></button>
-            </td>                
-                
-                <td>
-                    <input class="w3-input w3-large" type="date" id="from" value="2018-10-20" />
-                </td>
-                <td>
-                    <input class="w3-input w3-large" type="date" id="to"/>
-                </td>
-                <td>
-<button id="submit" class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge" onclick="search()"></button>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="w3-container hero-image"><br>
-                    
-       
-        <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable" style="width:30%;"></table>
-    
-    
-        <div id="AssignmentsList" class="w3-container">
-            <table id="AssignmentsTable" class="w3-table w3-large"></table>
-        </div>
-    
-        <script>
-            $(document).ready(function () {
-                $('[data-toggle="popover"]').popover(
-                    {
-                        html: true,
-                        content: function () {
-                            return $('#AssignmentsList').html();
-                        }
-                    }).$(".popover").on("click", function () {$(this).popover('hide');});
+    <script>
+        $(function () {
+            $("#generate-button").click(function () {
+                var instanceurl = $("#instanceurl").val();
+                var client_id = $("#client_id").val();
+                var client_secret = $("#client_secret").val();
+                var redirect_uri = $("#redirect_uri").val();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                if (username !== "" || password !== "")
+                {
+                    var token_input = $("#token");
+                    var result_div = $("#result");
+                    document.getElementById("iurl").value = document.getElementById("instanceurl").value;
+                    generate_token(instanceurl, client_id, client_secret, redirect_uri, username, password, token_input, result_div);
+                }
             });
-        </script>
-
-    </div>
-
-    <div class="modal fade" id="assignment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-        <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <table id="title" class="w3-table-all"></table>
-    </div>
-    <div class="modal-body">
-    <div id="popover-content">
-    <form class="form-inline" role="form">
-        <div class="form-group">
-            <p id="content">Hello</p> 
-        </div>
-    </form>
-    </div>
-    </div>
-    <div class="modal-footer">
-    <div class="modal-footer">            
-        <button id="print" type="button" class="btn btn-primary btn-sm"
-            onclick="printJS({
-                printable: 'assignment',
-                type: 'html',
-                ignoreElements: ['close','print'],
-                targetStyles: '*',
-                css: 'styles/pdf.css'
-            })">
-        PRINT
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-
-<script type="text/javascript">
-    function initDate(){
-        let today = new Date().toISOString().substr(0, 10);
-        document.querySelector("#to").value = today;
-        search();
-    }
-
-
-
-    function search() {
-
-        let date = new Date($('#from').val());
-            day = date.getDate();
-            month = date.getMonth() + 1;
-            year = date.getFullYear();
-        let fromdate = year + '-' + month + '-' + day;
-
-
-            date = new Date($('#to').val());
-            day = date.getDate();
-            month = date.getMonth() + 1;
-            year = date.getFullYear();
-        let todate = year + '-' + month + '-' + day;
-
-
-        var httpAssignments = new XMLHttpRequest();
-        httpAssignments.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                document.getElementById("EmployeesList").innerHTML = this.responseText;
-            }
-        };
-        httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
-        httpAssignments.send();
-
-        $(document).ready(function () {
-            $('[data-toggle="popover"]').popover(
-            {
-                html: true,
-                content: function () {
-                    return $('#AssignmentsList').html();
-                }
-            }).$(".popover").on("click", function () {$(this).popover('hide');});
-        });    
-    }
-
-
-
-    function assignments(id) {
-        let date = new Date($('#from').val());
-            day = date.getDate();
-            month = date.getMonth() + 1;
-            year = date.getFullYear();
-        let fromdate = year + '-' + month + '-' + day;
-
-
-            date = new Date($('#to').val());
-            day = date.getDate();
-            month = date.getMonth() + 1;
-            year = date.getFullYear();
-        let todate = year + '-' + month + '-' + day;
-        
-        var httpAssignments = new XMLHttpRequest();
-        httpAssignments.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                document.getElementById("AssignmentsTable").innerHTML = this.responseText;
-            }
-        };
-        httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
-        httpAssignments.send();
-    };
-
-
-
-    function today() {
-        let today = new Date().toISOString().substr(0, 10);
-        document.querySelector("#from").value = today;
-        document.querySelector("#to").value = today;
-        search();
-        document.getElementById("out").innerHTML = "Today " + new Date().toUTCString();
-    }
-
-    function week() {
-        var curr = new Date; // get current date
-        var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-        document.querySelector("#from").value = new Date(curr.setDate(first)).toISOString().substr(0, 10);
-
-        document.getElementById("out").innerHTML = "From " + new Date(curr.setDate(first)).toUTCString();
-
-        search();                
-    }
-
-    function getmonth() {
-        var date = new Date();
-        var first = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
-        document.querySelector("#from").value = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
-
-        document.getElementById("out").innerHTML = "From " + new Date(date.getFullYear(), date.getMonth(), 2).toUTCString();
-
-        search();
-    }
-</script>
-
-
-    
-    <!-- Assignment Content -->
-    <script type="text/javascript">
-        function content(id) {
-            
-            var httpAssignments = new XMLHttpRequest();
-            httpAssignments.onreadystatechange = function () {
-                if (this.readyState === 4) {
-                    document.getElementById("title").innerHTML = this.responseText;
-                }
-            };
-            httpAssignments.open("GET", "mysql/title.php?id=" + id, false);
-            httpAssignments.send();
-            
-            
-            var httpAssignments = new XMLHttpRequest();
-            httpAssignments.onreadystatechange = function () {
-                if (this.readyState === 4) {
-                    document.getElementById("content").innerHTML = this.responseText;
-                }
-            };
-            httpAssignments.open("GET", "mysql/content.php?id=" + id, false);
-            httpAssignments.send();
-        }
+        });
     </script>
+
+    <script>
+        function generate_token(instanceurl, client_id, client_secret, redirect_uri, username, password, token_input, result_div) {
+            token_input.val("");
+            result_div.html("");
+            try
+            {
+                var xmlDoc;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", instanceurl + "/oauth/token", true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function (e)
+                {
+                    if (xhr.readyState === 4)
+                    {
+                        var a = JSON.parse(e.target.responseText);
+                        token_input.val(a["access_token"]);
+                        if (token_input.val() !== "")
+                        {
+                            document.getElementById('invalidCredentials').style.display = 'none';
+                            // $('#welcome-modal').modal('show');
+                            setTimeout(function () {
+                                $('#welcome-modal').modal('hide');
+                            }, 6000);
+                            document.getElementById("generate-report").click();
+                        } else
+                            document.getElementById('invalidCredentials').style.display = 'inline';
+
+                        result_div.html(show_response(e.target.responseText));
+                        xmlDoc = this.responseText;
+                        txt = "";
+                    }
+                };
+                xhr.send("client_id=" + client_id + "&client_secret=" + client_secret + "&grant_type=password&username=" + username + "&password=" + password + "&redirect_uri=" + redirect_uri);
+            } catch (err)
+            {
+                alert(err.message);
+            }
+        };
+
+        function show_response(str) {
+            str = vkbeautify.xml(str, 4);
+            return str.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br />");
+        };
+
+        function validateForm() {
+            var x = document.forms["frm"]["token"].value;
+            if (x === "") {
+                alert("Generate an access token first");
+                return false;
+            }
+        };
+    </script>
+</head>
+<body>
+
+    <input  id="instanceurl" type="hidden" name="instanceurl" value="https://alsanawbar.school/"/>
+    <input  id="client_id" type="hidden" value="6f4b0bf73d65d6e15d2c36fde4a91d4a3798dfeb6292f33772dd17d2f9ab3ac0"/>
+    <input  id="client_secret" type="hidden" value="b3b0299f9ec7cc4dd4c45cb9f3d00a13c24011c91eb3aeff63cab1e462bf5bbe"/>
+    <input  id="redirect_uri" type="hidden" value="https://tracker.alsanawbar.school"/>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form class="login100-form validate-form flex-sb flex-w" onsubmit = "event.preventDefault();">
+                    <span class="login100-form-title p-b-32">
+                        Assignemnts Tracker
+                    </span>
+                    <?php
+                    if (isset($_SESSION['notloggedin'])) {
+                        ?>
+                        <div id='noaccess' class="alert alert-warning wrap-input100  m-b-12">
+                            <strong>Not Logged in!</strong> Please login first to continue.
+                        </div>
+                        
+                        <?php
+                        unset($_SESSION['notloggedin']);
+                    }
+                    ?>
+
+                    <?php
+                    if (isset($_SESSION['noaccess'])) {
+                        ?>
+                        <div id='noaccess' class="alert alert-danger wrap-input100  m-b-12">
+                            <strong>Unauthorized!</strong> You are unauthorized to use this system. Only admins & teachers have the access. <br>Please contact system administrator.
+                        </div>
+
+                        <?php
+                        unset($_SESSION['noaccess']);
+                    }
+                    ?>
+                    <div id='invalidCredentials' class="alert alert-danger wrap-input100  m-b-12" style="display: none;">
+                        <strong>Invalid!</strong> Username or Password
+                    </div>
+                    <span class="txt1 p-b-11">
+                        Username
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
+                        <input class="input100"   id="username" type="text" placeholder="Username" autofocus/>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="txt1 p-b-11">
+                        Password
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+                        <span class="btn-show-pass">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                        <input class="input100"  id="password" type="password" placeholder="Password"/>
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-b-48">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <input class="login100-form-btn" type= "submit" id="generate-button" value ="Login" >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <form name="frm" onsubmit="return validateForm()" action="login.php" method="POST" style="display: none">
+        <input id="token" type="hidden" name="token">
+        <input id="iurl" type="hidden" name="iurl">
+        <input id="user"  name="user">
+        <input type= "submit" id="generate-report" value ="Generate Reports">
+    </form>
+    
+    <div id="welcome-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p style="text-align: center"><strong> Successfully Logged in. </strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var input = document.getElementById("password");
+        input.addEventListener("keyup", function (event) {
+            document.getElementById("user").value = document.getElementById("username").value;
+            if (event.keyCode === 13)
+                document.getElementById("generate-button").click();
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 </body>
 </html>
+
