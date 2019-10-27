@@ -79,7 +79,7 @@ if (!isset($_SESSION['login'])) {
             <td>
                 <button id='pp' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-print w3-xlarge' onclick="printJS({
                     documentTitle: 'InDepth - Assignments Tracker',
-                    printable: 'pagetitle',
+                    printable: 'EmployeesList',
                     type: 'html',
                     targetStyles: ['*'],
                     css: 'styles/pdf.css',
