@@ -1,0 +1,36 @@
+#page-title {
+    background-color: wheat;
+}
+
+.popover-title {
+    background-color: #3333ff;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+}
+
+.popover {
+    color: black;
+    max-width: 40%;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
+    font-family: arial;
+}
+.stuck {
+    background: url(../img/bg.png) repeat;
+    position: fixed;
+    overflow-y: scroll;
+    max-height: 75%;
+    direction:rtl;
+    width: 100%;
+}
+
+#EmployeesList{
+    direction:ltr;
+    width: 20%;
+    float: left;
+    font-size: 2px;
+}

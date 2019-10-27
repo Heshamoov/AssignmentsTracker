@@ -34,7 +34,7 @@ $result = $conn->query($sql);
 $rownumber = 1;
 if ($result->num_rows > 0) {
     echo  "<thead class='w3-black'><tr class='w3-text-black'><th>#</th><th>Date</th><th>Grade</th><th style='text-align: center'>Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class='printBtn' onclick=printJS({printable:'AssignmentsTable',type:'html',css:'styles/pdf.css'})>
+        <button class='printBtn' onclick=printJS({printable:'AssignmentsTable',type:'html',assets:'styles/pdf.assets'})>
             Print
         </button></th></tr></thead>";
     
