@@ -34,7 +34,7 @@ p {
 
 #EmployeesList{
     direction:ltr;
-    width: fit-content;
+    width: 20%;
     float: left;
     font-size: 14px;
     font-weight: bold;
