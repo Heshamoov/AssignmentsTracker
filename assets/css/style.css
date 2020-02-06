@@ -30,7 +30,8 @@ p {
 
 #EmployeesList{
     direction:ltr;
-    width: 20%;
+    width: fit-content;
     float: left;
-    font-size: 2px;
+    font-size: 12px;
+    font-weight: bold;
 }

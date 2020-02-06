@@ -33,8 +33,8 @@ if ($searchResult->num_rows > 0) {
     while ($row = $searchResult->fetch_assoc()) {
         if ($row['dept'] !== $First_line) {
             echo "<thead>
-                    <tr class='w3-light-grey'>
-                        <th colspan=2 class='w3-center'>$row[dept]</th>
+                    <tr class='w3-blue'>
+                        <th colspan=2 class='w3-center w3-large'>$row[dept]</th>
                     </tr>
                    </thead>";
             echo "<tr class=' w3-text-green w3-hover-green w3-white'>";

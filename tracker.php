@@ -80,7 +80,7 @@ if (!isset($_SESSION['login'])) {
 
     <div class="w3-container page-body">
         <div class="stuck">
-            <table id="EmployeesList" class="w3-table-all w3-card-4 w3-large prinTable"></table>
+            <table id="EmployeesList" class="w3-table-all w3-card-4"></table>
         </div>
 
         <div id="AssignmentsList" class="w3-container">
@@ -238,7 +238,6 @@ if (!isset($_SESSION['login'])) {
         <!-- Assignment Content -->
         <script type="text/javascript">
             function content(id) {
-
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
                     if (this.readyState === 4) {
