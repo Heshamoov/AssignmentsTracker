@@ -34,7 +34,7 @@ if ($searchResult->num_rows > 0) {
         if ($row['dept'] !== $First_line) {
             echo "<thead>
                     <tr class='w3-indigo'>
-                        <th colspan=2 class='w3-center w3-large'>$row[dept]</th>
+                        <th class='w3-center w3-large'>$row[dept]</th>
                     </tr>
                    </thead>";
             echo "<tr class=' w3-text-green w3-white'>";
@@ -42,7 +42,6 @@ if ($searchResult->num_rows > 0) {
         } else {
             echo "<tr>";
         }
-
         echo "<td class='w3-center'>
                     <button class='w3-button w3-ripple w3-hover-green' data-toggle='popover' data-trigger='focus'
                     onclick='assignments($row[id])'>$row[employee] - $row[count]</button>

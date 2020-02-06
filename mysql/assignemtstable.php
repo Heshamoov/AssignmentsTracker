@@ -24,7 +24,7 @@ $sql = "SELECT employees.first_name 'employee', employee_positions.name 'positio
         WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d')
                 BETWEEN
                 '$fromdate' AND '$todate'
-        AND employees.id = $id ORDER BY date";
+        AND employees.id = $id ORDER BY date DESC";
         
      
 // echo $sql;
@@ -33,10 +33,21 @@ $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo  "<thead class='w3-black'><tr class='w3-text-black'><th>#</th><th>Date</th><th>Grade</th><th style='text-align: center'>Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class='printBtn' onclick=printJS({printable:'AssignmentsTable',type:'html',assets:'styles/pdf.assets'})>
-            Print
-        </button></th></tr></thead>";
+    echo  "<thead>
+            <tr class='w3-indigo'>
+                <th>#</th>
+                <th>Date</th>
+                <th>Grade</th>
+                <th style='text-align: center'>
+                    Title
+                </th>
+                <th>
+<button class='w3-button w3-indigo print-btn w3-hover-red' onclick=printJS({printable:'AssignmentsTable',type:'html',assets:'styles/pdf.assets'})>
+    <i style='font-size:24px' class='fa'>&#xf02f;</i>
+</button>
+                 </th>
+            </tr>
+            </thead>";
     
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
@@ -45,8 +56,8 @@ if ($result->num_rows > 0) {
                 <td>
                 $row[date]
                 </td>
-                <td align='left'>$row[course]-$row[section]</td>
-                <td style='text-align: right;'>
+                <td align='left'>$row[course] - $row[section]</td>
+                <td colspan=2 style='text-align: right;'>
 <button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[id])'>
                 $row[title]
                 </button>

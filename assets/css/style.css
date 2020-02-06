@@ -1,9 +1,11 @@
 body{
     font-family: "Segoe UI",Arial,sans-serif;
+    /*background: url(../img/bg.png) repeat;*/
+    background-color: wheat;
 }
 
 #page-title {
-    background-color: wheat;
+    /*background-color: wheat;*/
 }
 
 .popover-title {
@@ -23,19 +25,37 @@ p {
     text-align: center;
     font-family: arial;
 }
-.stuck {
+
+.page-body{
     background: url(../img/bg.png) repeat;
+    min-height: 100%;
+}
+
+.left-div {
+    float: left;
     position: fixed;
     overflow-y: scroll;
     max-height: 75%;
     direction:rtl;
-    width: 100%;
+    width: 30%;
 }
 
-#EmployeesList{
-    direction:ltr;
-    width: 20%;
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
+.right-div {
+    right: 15px;
+    position: fixed;
+    overflow-y: scroll;
+    max-height: 75%;
+}
+
+#assignments-list, .right-div {
+    float: right;
+}
+
+.print-btn {
+    float: right;
+    border: none;
+}
+
+.hidden-element{
+    display: none;
 }

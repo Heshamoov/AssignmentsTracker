@@ -39,16 +39,10 @@ if (!isset($_SESSION['login'])) {
             </tr>
             <tr>
                 <td>
-                    <button id='pp' class='w3-button'
-                            onclick="printJS({
-                                documentTitle: 'InDepth - Assignments Tracker',
-                                printable: 'EmployeesList',
-                                type: 'html',
-                                targetStyles: ['*'],
-                                css: 'styles/pdf.css',
-                            })">
-                        <i style="font-size:24px" class="fa">&#xf02f;</i>
-                    </button>
+<button id='pp' class='w3-button w3-hover-red'
+        onclick= 'employees_list()'>
+        <i style="font-size:24px" class="fa">&#xf02f;</i>
+</button>
                 </td>
                 <td>
                     <button class="w3-button w3-white w3-hover-green w3-border" onclick="getmonth()">
@@ -78,30 +72,35 @@ if (!isset($_SESSION['login'])) {
         </table>
     </div>
 
-    <div class="w3-container page-body">
-        <div class="stuck">
-            <table id="EmployeesList" class="w3-table-all w3-card-4"></table>
+    <div class="w3-row w3-container page-body">
+        <div class="w3-quarter left-div" id="employees-div">
+            
+            <img id="school-logo" class="hidden-element" src="assets/img/Alsanawbar-Logo.jpg">
+            <table class="hidden-element">
+                <tr>
+                    <th><h3>Al Sanawbar School</h3></th>
+                </tr>
+            </table>
+            <table id="employees-list" class="w3-table-all"></table>
         </div>
 
-        <div id="AssignmentsList" class="w3-container">
-            <table id="AssignmentsTable" class="w3-table w3-large"></table>
+        <div class="w3-twothird right-div">
+            <table id="assignments-list" class="w3-table-all"></table>
         </div>
-
-        <script>
-            $(document).ready(function () {
-                $('[data-toggle="popover"]').popover(
-                    {
-                        html: true,
-                        content: function () {
-                            return $('#AssignmentsList').html();
-                        }
-                    }).$(".popover").on("click", function () {
-                    $(this).popover('hide');
-                });
-            });
-        </script>
-
     </div>
+<!--        <script>-->
+<!--            $(document).ready(function () {-->
+<!--                $('[data-toggle="popover"]').popover(-->
+<!--                    {-->
+<!--                        html: true,-->
+<!--                        content: function () {-->
+<!--                            return $('#AssignmentsList').html();-->
+<!--                        }-->
+<!--                    }).$(".popover").on("click", function () {-->
+<!--                    $(this).popover('hide');-->
+<!--                });-->
+<!--            });-->
+<!--        </script>-->
 
     <div class="modal fade" id="assignment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -160,23 +159,23 @@ if (!isset($_SESSION['login'])) {
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
                     if (this.readyState === 4) {
-                        document.getElementById("EmployeesList").innerHTML = this.responseText;
+                        document.getElementById("employees-list").innerHTML = this.responseText;
                     }
                 };
                 httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
                 httpAssignments.send();
 
-                $(document).ready(function () {
-                    $('[data-toggle="popover"]').popover(
-                        {
-                            html: true,
-                            content: function () {
-                                return $('#AssignmentsList').html();
-                            }
-                        }).$(".popover").on("click", function () {
-                        $(this).popover('hide');
-                    });
-                });
+                // $(document).ready(function () {
+                //     $('[data-toggle="popover"]').popover(
+                //         {
+                //             html: true,
+                //             content: function () {
+                //                 return $('#AssignmentsList').html();
+                //             }
+                //         }).$(".popover").on("click", function () {
+                //         $(this).popover('hide');
+                //     });
+                // });
             }
 
 
@@ -197,7 +196,7 @@ if (!isset($_SESSION['login'])) {
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
                     if (this.readyState === 4) {
-                        document.getElementById("AssignmentsTable").innerHTML = this.responseText;
+                        document.getElementById("assignments-list").innerHTML = this.responseText;
                     }
                 };
                 httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
@@ -257,6 +256,12 @@ if (!isset($_SESSION['login'])) {
                 httpAssignments.open("GET", "mysql/content.php?id=" + id, false);
                 httpAssignments.send();
             }
+
+
+function employees_list() {
+
+printJS({documentTitle: 'InDepth - Assignments Tracker', printable: 'employees-div', type: 'html', css: 'assets/css/print.css'})
+}
         </script>
     </body>
     </html>
