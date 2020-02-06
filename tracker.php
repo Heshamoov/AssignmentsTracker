@@ -78,7 +78,7 @@ if (!isset($_SESSION['login'])) {
             <img id="school-logo" class="hidden-element" src="assets/img/Alsanawbar-Logo.jpg">
             <table class="hidden-element">
                 <tr>
-                    <th><h3>Al Sanawbar School</h3></th>
+                    <th><h2>Assignments Tracker - Al Sanawbar School</h2></th>
                 </tr>
             </table>
             <table id="employees-list" class="w3-table-all"></table>

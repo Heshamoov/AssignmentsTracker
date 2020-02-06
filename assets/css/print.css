@@ -13,3 +13,11 @@
     width: 100%;
     border: 1px solid;
 }
+
+.w3-button{
+    border: none;
+}
+
+table, table th {
+    margin: auto;
+}
