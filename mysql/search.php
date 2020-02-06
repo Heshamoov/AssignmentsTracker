@@ -33,23 +33,19 @@ if ($searchResult->num_rows > 0) {
     while ($row = $searchResult->fetch_assoc()) {
         if ($row['dept'] !== $First_line) {
             echo "<thead>
-                    <tr class='w3-blue'>
+                    <tr class='w3-indigo'>
                         <th colspan=2 class='w3-center w3-large'>$row[dept]</th>
                     </tr>
                    </thead>";
             echo "<tr class=' w3-text-green w3-hover-green w3-white'>";
             $First_line = $row['dept'];
         } else {
-            echo "<tr class='w3-hover-green'>";
+            echo "<tr>";
         }
 
-        echo "<td>
-<button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover' data-trigger='focus'
-                onclick='assignments($row[id])'>$row[employee] </button>         
-                </td>
-              <td>
-<button class='w3-button w3-ripple w3-hover-white w3-round-xxlarge' data-toggle='popover' data-trigger='focus'
-                onclick='assignments($row[id])'>$row[count]</button>
+        echo "<td class='w3-center'>
+                    <button class='w3-button w3-ripple w3-hover-green' data-toggle='popover' data-trigger='focus'
+                    onclick='assignments($row[id])'>$row[employee] - $row[count]</button>
               </td>
             </tr>";
     }

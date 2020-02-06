@@ -30,7 +30,7 @@ if (!isset($_SESSION['login'])) {
         </h2>
 
         <table class="w3-table-all w3-centered w3-card-4 user-options">
-            <tr>
+            <tr class="w3-indigo">
                 <th>Print</th>
                 <th>Simple Track</th>
                 <th>From</th>

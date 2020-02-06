@@ -1,3 +1,7 @@
+body{
+    font-family: "Segoe UI",Arial,sans-serif;
+}
+
 #page-title {
     background-color: wheat;
 }
@@ -32,6 +36,6 @@ p {
     direction:ltr;
     width: fit-content;
     float: left;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
