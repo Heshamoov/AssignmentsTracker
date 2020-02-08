@@ -9,16 +9,13 @@ if (!isset($_SESSION['login'])) {
 } else {
     include('Header.php');
     ?>
+    <script src="assets/js/print_header.js"></script>
 
     <head>
-        <style>
-
-        </style>
-
         <title>InDepth Eye</title>
     </head>
 
-    <body onload="initDate()">
+    <body onload="initDate(); pdf_date()">
 
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
@@ -39,10 +36,10 @@ if (!isset($_SESSION['login'])) {
             </tr>
             <tr>
                 <td>
-<button id='pp' class='w3-button w3-hover-red'
-        onclick= 'employees_list()'>
-        <i style="font-size:24px" class="fa">&#xf02f;</i>
-</button>
+                    <button id="pp" class='w3-button w3-hover-red'
+                            onclick="print_teachers_list()" accesskey="q">
+                    <i style="font-size:24px" class="fa">&#xf02f;</i>
+                    </button>
                 </td>
                 <td>
                     <button class="w3-button w3-white w3-hover-green w3-border" onclick="getmonth()">
@@ -73,14 +70,26 @@ if (!isset($_SESSION['login'])) {
     </div>
 
     <div class="w3-row w3-container page-body">
-        <div class="w3-quarter left-div" id="employees-div">
-            
-            <img id="school-logo" class="hidden-element" src="assets/img/Alsanawbar-Logo.jpg">
-            <table class="hidden-element">
+        <div class="w3-quarter left-div" id="teachers-div">
+            <table id="headerDiv" style="padding-top: 20px; margin-bottom: 30px;">
                 <tr>
-                    <th><h2>Assignments Tracker - Al Sanawbar School</h2></th>
+                    <td rowspan="2" class="textLeft" id="logoTd" >
+                        <img src="assets/img/Alsanawbar-Logo.jpg" width="50" class="logoImage" alt="sanawbar logo">
+                    </td>
+                    <td class="school-name">AL SANAWBAR SCHOOL</td>
+                </tr>
+                <tr>
+                    <td>Al Manaseer</td>
+                    <td id="pdf_date_range"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr style="min-width:100%"></td>
+                </tr>
+                <tr>
+                    <th>Assignments Tracker</th>
                 </tr>
             </table>
+
             <table id="employees-list" class="w3-table-all"></table>
         </div>
 
@@ -88,19 +97,6 @@ if (!isset($_SESSION['login'])) {
             <table id="assignments-list" class="w3-table-all"></table>
         </div>
     </div>
-<!--        <script>-->
-<!--            $(document).ready(function () {-->
-<!--                $('[data-toggle="popover"]').popover(-->
-<!--                    {-->
-<!--                        html: true,-->
-<!--                        content: function () {-->
-<!--                            return $('#AssignmentsList').html();-->
-<!--                        }-->
-<!--                    }).$(".popover").on("click", function () {-->
-<!--                    $(this).popover('hide');-->
-<!--                });-->
-<!--            });-->
-<!--        </script>-->
 
     <div class="modal fade" id="assignment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -164,18 +160,6 @@ if (!isset($_SESSION['login'])) {
                 };
                 httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
                 httpAssignments.send();
-
-                // $(document).ready(function () {
-                //     $('[data-toggle="popover"]').popover(
-                //         {
-                //             html: true,
-                //             content: function () {
-                //                 return $('#AssignmentsList').html();
-                //             }
-                //         }).$(".popover").on("click", function () {
-                //         $(this).popover('hide');
-                //     });
-                // });
             }
 
 
@@ -231,6 +215,24 @@ if (!isset($_SESSION['login'])) {
 
                 search();
             }
+
+
+            function pdf_date() {
+                let date = new Date($('#from').val());
+                day = date.getDate();
+                month = date.getMonth() + 1;
+                year = date.getFullYear();
+                let fromdate = year + '-' + month + '-' + day;
+
+                date = new Date($('#to').val());
+                day = date.getDate();
+                month = date.getMonth() + 1;
+                year = date.getFullYear();
+                let todate = year + '-' + month + '-' + day;
+
+                document.getElementById('pdf_date_range').innerHTML = fromdate + " - " + todate;
+            }
+
         </script>
 
 
@@ -257,11 +259,15 @@ if (!isset($_SESSION['login'])) {
                 httpAssignments.send();
             }
 
+            function print_teachers_list() {
 
-function employees_list() {
-
-printJS({documentTitle: 'InDepth - Assignments Tracker', printable: 'employees-div', type: 'html', css: 'assets/css/print.css'})
-}
+                printJS({
+                    documentTitle: 'InDepth - Assignments Tracker',
+                    printable: 'teachers-div',
+                    type: 'html',
+                    css: 'assets/css/pdf.css'
+                })
+            }
         </script>
     </body>
     </html>

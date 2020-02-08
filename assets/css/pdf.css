@@ -42,3 +42,21 @@ button {
   background-color: #4CAF50;
   color: white;
 }
+
+.left-div{
+    background-color: red;
+}
+
+#school-details{
+    background-color: red;
+}
+#school-logo{
+    size: 100px;
+}
+
+.school-logo{
+    size: 100px;
+}
+#headerDiv{
+    display: block;
+}
