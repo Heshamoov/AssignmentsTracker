@@ -15,7 +15,7 @@ if (!isset($_SESSION['login'])) {
         <title>InDepth Eye</title>
     </head>
 
-    <body onload="initDate(); pdf_date()">
+    <body onload="initDate(); pdf_date(); current_date()">
 
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
@@ -71,6 +71,7 @@ if (!isset($_SESSION['login'])) {
 
     <div class="w3-row w3-container page-body">
         <div class="w3-quarter left-div" id="teachers-div">
+            <p id="current_date" hidden></p>
             <table id="headerDiv" style="padding-top: 20px; margin-bottom: 30px;" hidden>
                 <tr>
                     <td rowspan="3" class="textLeft" id="logoTd" >
@@ -85,7 +86,7 @@ if (!isset($_SESSION['login'])) {
                     <td colspan="2"><hr style="min-width:100%"></td>
                 </tr>
                 <tr>
-                    <th colspan="2">Assignments Tracker</th>
+                    <th colspan="2">Assignments Tracker - Teachers List</th>
                 </tr>
             </table>
 
@@ -193,6 +194,12 @@ if (!isset($_SESSION['login'])) {
                 document.querySelector("#to").value = today;
                 search();
                 document.getElementById("out").innerHTML = "Today " + new Date().toUTCString();
+            }
+
+            function current_date() {
+                let today = new Date().toISOString().substr(0, 10);
+                document.getElementById("current_date").innerHTML = "Printing Date: " + today;
+
             }
 
             function week() {

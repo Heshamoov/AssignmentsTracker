@@ -39,7 +39,7 @@ button {
   color: white;
 }
 
-#headerDiv{
+#headerDiv, #current_date{
     display: block;
 }
 
@@ -52,3 +52,9 @@ button {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+#current_date {
+    float: right;
+    font-size: 12px;
+}
+
