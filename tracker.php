@@ -71,22 +71,21 @@ if (!isset($_SESSION['login'])) {
 
     <div class="w3-row w3-container page-body">
         <div class="w3-quarter left-div" id="teachers-div">
-            <table id="headerDiv" style="padding-top: 20px; margin-bottom: 30px;">
+            <table id="headerDiv" style="padding-top: 20px; margin-bottom: 30px;" hidden>
                 <tr>
-                    <td rowspan="2" class="textLeft" id="logoTd" >
+                    <td rowspan="3" class="textLeft" id="logoTd" >
                         <img src="assets/img/Alsanawbar-Logo.jpg" width="50" class="logoImage" alt="sanawbar logo">
                     </td>
                     <td class="school-name">AL SANAWBAR SCHOOL</td>
                 </tr>
                 <tr>
-                    <td>Al Manaseer</td>
                     <td id="pdf_date_range"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><hr style="min-width:100%"></td>
                 </tr>
                 <tr>
-                    <th>Assignments Tracker</th>
+                    <th colspan="2">Assignments Tracker</th>
                 </tr>
             </table>
 
