@@ -12,19 +12,20 @@ $todate = $_REQUEST["todate"];
 $sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
         employee_departments.name 'dept', subjects.name 'subject',
         assignments.title 'title', assignments.employee_id id,
-        CONVERT(assignments.created_at, Date) 'date', courses.course_name 'course', batches.name 'section'
-        FROM ((((((
-            employee_departments
-                INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
-                    INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id)
-                        INNER JOIN assignments ON employees.id = assignments.employee_id)
-                            INNER JOIN subjects ON assignments.subject_id = subjects.id)
-                                INNER JOIN batches ON subjects.batch_id = batches.id)
-                                    INNER JOIN courses ON batches.course_id = courses.id)
-        WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d')
-                BETWEEN
-                '$fromdate' AND '$todate'
-        AND employees.id = $id ORDER BY date DESC";
+        CONVERT(assignments.created_at, Date) 'date', courses.course_name 'course', batches.name 'section',
+        assignments.id 'assignment_id'
+        
+        FROM employee_departments
+            INNER JOIN employees ON employee_departments.id = employees.employee_department_id
+            INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id
+            INNER JOIN assignments ON employees.id = assignments.employee_id
+            INNER JOIN subjects ON assignments.subject_id = subjects.id
+            INNER JOIN batches ON subjects.batch_id = batches.id
+            INNER JOIN courses ON batches.course_id = courses.id
+            
+        WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d') BETWEEN '$fromdate' AND '$todate'
+        AND employees.id = $id 
+        ORDER BY date DESC";
         
      
 // echo $sql;
@@ -58,8 +59,8 @@ if ($result->num_rows > 0) {
                 </td>
                 <td align='left'>$row[course] - $row[section]</td>
                 <td colspan=2 style='text-align: right;'>
-<button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[id])'>
-                $row[title]
+<button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[assignment_id])'>
+                $row[title] - $row[assignment_id]
                 </button>
                 </td>
                 

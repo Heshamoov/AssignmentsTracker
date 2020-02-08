@@ -108,7 +108,6 @@ if (isset($_SESSION['login']))
     </script>
 </head>
 <body>
-
     <input  id="instanceurl" type="hidden" name="instanceurl" value="https://alsanawbar.school/"/>
     <input  id="client_id" type="hidden" value="6f4b0bf73d65d6e15d2c36fde4a91d4a3798dfeb6292f33772dd17d2f9ab3ac0"/>
     <input  id="client_secret" type="hidden" value="b3b0299f9ec7cc4dd4c45cb9f3d00a13c24011c91eb3aeff63cab1e462bf5bbe"/>

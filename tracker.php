@@ -244,14 +244,14 @@ if (!isset($_SESSION['login'])) {
 
         <!-- Assignment Content -->
         <script type="text/javascript">
-            function content(id) {
+            function content(assignment_id) {
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
                     if (this.readyState === 4) {
                         document.getElementById("title").innerHTML = this.responseText;
                     }
                 };
-                httpAssignments.open("GET", "mysql/title.php?id=" + id, false);
+                httpAssignments.open("GET", "mysql/title.php?id=" + assignment_id, false);
                 httpAssignments.send();
 
 

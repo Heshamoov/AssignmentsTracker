@@ -8,14 +8,13 @@ $id = $_REQUEST["id"];
 
 $sql = "SELECT employees.first_name 'name', subjects.name 'subject', assignments.title 'title', CONVERT(assignments.created_at, Date) 'date',
                 courses.course_name grade, batches.name section
-        FROM ((((((
-            employee_departments
-                INNER JOIN employees ON employee_departments.id = employees.employee_department_id)
-                    INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id)
-                        INNER JOIN assignments ON employees.id = assignments.employee_id)
-                            INNER JOIN subjects ON assignments.subject_id = subjects.id)
-                                INNER JOIN batches ON subjects.batch_id = batches.id)
-                                    INNER JOIN courses ON batches.course_id = courses.id)
+        FROM employee_departments
+            INNER JOIN employees ON employee_departments.id = employees.employee_department_id
+            INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id
+            INNER JOIN assignments ON employees.id = assignments.employee_id
+            INNER JOIN subjects ON assignments.subject_id = subjects.id
+            INNER JOIN batches ON subjects.batch_id = batches.id
+            INNER JOIN courses ON batches.course_id = courses.id
         
         WHERE assignments.id = $id";
 
