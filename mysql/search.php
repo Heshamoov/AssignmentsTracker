@@ -37,7 +37,7 @@ if ($searchResult->num_rows > 0) {
                         <th class='w3-center w3-large'>$row[dept]</th>
                     </tr>
                    </thead>";
-            echo "<tr class=' w3-text-green w3-white'>";
+            echo "<tr class='w3-text-green w3-white'>";
             $First_line = $row['dept'];
         } else {
             echo "<tr>";

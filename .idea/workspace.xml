@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c35664c9-7a01-469a-985b-0b88b4ddcd8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3fe9e77e-8d8f-4c71-bda1-7e74a907d8b3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3fe9e77e-8d8f-4c71-bda1-7e74a907d8b3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3fe9e77e-8d8f-4c71-bda1-7e74a907d8b3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/assignemtstable.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/assignemtstable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/title.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/title.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/pdf.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/pdf.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tracker.php" beforeDir="false" afterPath="$PROJECT_DIR$/tracker.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,25 +49,18 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot;&gt;</find>
-      <find>EmployeesList</find>
-      <find>header.php</find>
-      <find>print</find>
-      <find>hidden-element</find>
-      <find>employees-div</find>
-      <find>body</find>
-      <find>&lt;body</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Hesham &lt;heshamoov90@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="new_mark" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IgnoredFileRootStore">
@@ -154,8 +143,17 @@
       <updated>1581496640851</updated>
       <workItem from="1581496647169" duration="793000" />
       <workItem from="1581499288052" duration="1451000" />
-      <workItem from="1581503761518" duration="4333000" />
+      <workItem from="1581503761518" duration="4513000" />
+      <workItem from="1581570702124" duration="3260000" />
     </task>
+    <task id="LOCAL-00001" summary="Bug fixes">
+      <created>1581508215484</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581508215484</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +163,8 @@
     <MESSAGE value="Refactoring Layout" />
     <MESSAGE value="Release V2.0" />
     <MESSAGE value="Add users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add users" />
+    <MESSAGE value="Bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="220" y="182" key="#CLI_Interpreters" timestamp="1581499094660">
@@ -184,30 +183,58 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="94" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581505545710" />
-    <state width="1189" height="267" key="GridCell.Tab.0.bottom" timestamp="1581507363925">
+    <state x="278" y="126" key="CommitChangelistDialog2" timestamp="1581508212836">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state width="1189" height="267" key="GridCell.Tab.0.bottom/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581507363925" />
-    <state width="1189" height="267" key="GridCell.Tab.0.center" timestamp="1581507363924">
+    <state x="278" y="126" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581508212836" />
+    <state width="1237" height="328" key="GridCell.Tab.0.bottom" timestamp="1581570876605">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state width="1189" height="267" key="GridCell.Tab.0.center/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581507363924" />
-    <state width="1189" height="267" key="GridCell.Tab.0.left" timestamp="1581507363924">
+    <state width="1237" height="328" key="GridCell.Tab.0.bottom/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.0.center" timestamp="1581570876605">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state width="1189" height="267" key="GridCell.Tab.0.left/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581507363924" />
-    <state width="1189" height="267" key="GridCell.Tab.0.right" timestamp="1581507363924">
+    <state width="1237" height="328" key="GridCell.Tab.0.center/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.0.left" timestamp="1581570876605">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state width="1189" height="267" key="GridCell.Tab.0.right/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581507363924" />
+    <state width="1237" height="328" key="GridCell.Tab.0.left/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.0.right" timestamp="1581570876605">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state width="1237" height="328" key="GridCell.Tab.0.right/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.1.bottom" timestamp="1581570876605">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state width="1237" height="328" key="GridCell.Tab.1.bottom/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.1.center" timestamp="1581570876605">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state width="1237" height="328" key="GridCell.Tab.1.center/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.1.left" timestamp="1581570876605">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state width="1237" height="328" key="GridCell.Tab.1.left/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
+    <state width="1237" height="328" key="GridCell.Tab.1.right" timestamp="1581570876605">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state width="1237" height="328" key="GridCell.Tab.1.right/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570876605" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1581505583767">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581505583767" />
-    <state x="341" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1581503775461">
+    <state x="232" y="264" key="Vcs.Push.Dialog.v2" timestamp="1581508218528">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="341" y="352" key="com.intellij.ide.util.TipDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581503775461" />
+    <state x="232" y="264" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581508218528" />
+    <state x="341" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1581570701439">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state x="341" y="352" key="com.intellij.ide.util.TipDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581570701439" />
+    <state x="347" y="161" width="586" height="732" key="find.popup" timestamp="1581571962809">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state x="347" y="161" width="586" height="732" key="find.popup/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581571962809" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AssignmentsTracker$index_php.dat" NAME="index.php Coverage Results" MODIFIED="1581500727483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

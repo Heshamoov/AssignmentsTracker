@@ -15,8 +15,8 @@ if (!isset($_SESSION['login'])) {
         <title>InDepth Eye</title>
     </head>
 
-    <body onload="initDate(); pdf_date(); current_date()">
-
+    <body onload="initDate(); pdf_date(); current_date();">
+<div id="out"></div>
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
             <form action="logout.php" style="float: right;padding-top: 5px; padding-right: 10px;">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['login'])) {
                     </button>
                 </td>
                 <td>
-                    <button class="w3-button w3-white w3-hover-green w3-border" onclick="getmonth()">
+                    <button class="w3-button w3-white w3-hover-green w3-border" onclick="get_month()">
                         This Month
                     </button>
                     ||
@@ -55,10 +55,10 @@ if (!isset($_SESSION['login'])) {
                     </button>
                 </td>
                 <td>
-                    <input class="w3-input w3-large" type="date" id="from" value="2018-10-20"/>
+                    <input class="w3-input w3-large" type="date" id="from" value="2018-10-20" onchange="search()"/>
                 </td>
                 <td>
-                    <input class="w3-input w3-large" type="date" id="to"/>
+                    <input class="w3-input w3-large" type="date" id="to" onchange="search()"/>
                 </td>
                 <td>
                     <button id="submit"
@@ -203,22 +203,19 @@ if (!isset($_SESSION['login'])) {
             }
 
             function week() {
-                var curr = new Date; // get current date
-                var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-                document.querySelector("#from").value = new Date(curr.setDate(first)).toISOString().substr(0, 10);
-
+                let curr = new Date; // get current date
+                let first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+                document.querySelector("#from").value = new Date(curr.setDate(first)).toISOString().substr(0, 10); // Update Date Picker
                 document.getElementById("out").innerHTML = "From " + new Date(curr.setDate(first)).toUTCString();
 
                 search();
             }
 
-            function getmonth() {
-                var date = new Date();
-                var first = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
+            function get_month() {
+                let date = new Date();
+                let first = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
                 document.querySelector("#from").value = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
-
                 document.getElementById("out").innerHTML = "From " + new Date(date.getFullYear(), date.getMonth(), 2).toUTCString();
-
                 search();
             }
 
