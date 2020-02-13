@@ -16,11 +16,11 @@ if (!isset($_SESSION['login'])) {
     </head>
 
     <body onload="initDate(); pdf_date(); current_date();">
-<div id="out"></div>
+    <!--<div id="out"></div>-->
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
             <form action="logout.php" style="float: right;padding-top: 5px; padding-right: 10px;">
-                <button type='submit' href='logout.php' class="btn btn-danger btn-sm">
+                <button type='submit'` href='logout.php' class="btn btn-danger btn-sm">
                     <span class="glyphicon glyphicon-log-out"></span> Log out
                 </button>
             </form>
@@ -38,7 +38,7 @@ if (!isset($_SESSION['login'])) {
                 <td>
                     <button id="pp" class='w3-button w3-hover-red'
                             onclick="print_teachers_list()" accesskey="q">
-                    <i style="font-size:24px" class="fa">&#xf02f;</i>
+                        <i style="font-size:24px" class="fa">&#xf02f;</i>
                     </button>
                 </td>
                 <td>
@@ -71,29 +71,48 @@ if (!isset($_SESSION['login'])) {
 
     <div class="w3-row w3-container page-body">
         <div class="w3-quarter left-div" id="teachers-div">
-            <p id="current_date" hidden></p>
-            <table id="headerDiv" style="padding-top: 20px; margin-bottom: 30px;" hidden>
+            <table id="header-t" hidden>
                 <tr>
-                    <td rowspan="3" class="textLeft" id="logoTd" >
-                        <img src="assets/img/Alsanawbar-Logo.jpg" width="50" class="logoImage" alt="sanawbar logo">
+                    <td rowspan="3" class="textLeft" id="logoTd">
+                        <img src="assets/img/Alsanawbar-Logo.jpg" width="70" class="logoImage" alt="sanawbar logo">
                     </td>
-                    <td class="school-name">AL SANAWBAR SCHOOL</td>
+                    <td colspan="2"><strong>AL SANAWBAR SCHOOL</strong></td>
                 </tr>
                 <tr>
-                    <td id="pdf_date_range"></td>
+                    <td colspan="2" id="pdf_date_range_t"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><hr style="min-width:100%"></td>
-                </tr>
-                <tr>
-                    <th colspan="2">Assignments Tracker - Teachers List</th>
+                    <td>Assignments Tracker - Teachers List</td>
+                    <td><p id="current_date_t"></p></td>
                 </tr>
             </table>
-
+            <hr>
             <table id="employees-list" class="w3-table-all"></table>
         </div>
 
-        <div class="w3-twothird right-div">
+        <div class="w3-twothird right-div" id="assignments-div">
+
+            <table id="header-a" style="padding-top: 20px; margin-bottom: 30px;" hidden>
+                <tr>
+                    <td rowspan="3" class="textLeft" id="logoTd">
+                        <img src="assets/img/Alsanawbar-Logo.jpg" width="50" class="logoImage" alt="sanawbar logo">
+                    </td>
+                    <td><strong>AL SANAWBAR SCHOOL</strong></td>
+                </tr>
+                <tr>
+                    <td id="pdf_date_range_a"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr style="min-width:100%">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Assignments Tracker - Assignments List</th>
+                    <p id="current_date_a"></p>
+                </tr>
+            </table>
+
             <table id="assignments-list" class="w3-table-all"></table>
         </div>
     </div>
@@ -193,12 +212,13 @@ if (!isset($_SESSION['login'])) {
                 document.querySelector("#from").value = today;
                 document.querySelector("#to").value = today;
                 search();
-                document.getElementById("out").innerHTML = "Today " + new Date().toUTCString();
+                // document.getElementById("out").innerHTML = "Today " + new Date().toUTCString();
             }
 
             function current_date() {
                 let today = new Date().toISOString().substr(0, 10);
-                document.getElementById("current_date").innerHTML = "Printing Date: " + today;
+                document.getElementById("current_date_t").innerHTML = "Printing Date: " + today;
+                document.getElementById("current_date_a").innerHTML = "Printing Date: " + today;
 
             }
 
@@ -206,7 +226,7 @@ if (!isset($_SESSION['login'])) {
                 let curr = new Date; // get current date
                 let first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
                 document.querySelector("#from").value = new Date(curr.setDate(first)).toISOString().substr(0, 10); // Update Date Picker
-                document.getElementById("out").innerHTML = "From " + new Date(curr.setDate(first)).toUTCString();
+                // document.getElementById("out").innerHTML = "From " + new Date(curr.setDate(first)).toUTCString();
 
                 search();
             }
@@ -215,7 +235,7 @@ if (!isset($_SESSION['login'])) {
                 let date = new Date();
                 let first = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
                 document.querySelector("#from").value = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substr(0, 10);
-                document.getElementById("out").innerHTML = "From " + new Date(date.getFullYear(), date.getMonth(), 2).toUTCString();
+                // document.getElementById("out").innerHTML = "From " + new Date(date.getFullYear(), date.getMonth(), 2).toUTCString();
                 search();
             }
 
@@ -233,7 +253,8 @@ if (!isset($_SESSION['login'])) {
                 year = date.getFullYear();
                 let todate = year + '-' + month + '-' + day;
 
-                document.getElementById('pdf_date_range').innerHTML = fromdate + " - " + todate;
+                document.getElementById('pdf_date_range_a').innerHTML = "<strong>Date Range: </strong>" + fromdate + " - " + todate;
+                document.getElementById('pdf_date_range_t').innerHTML = "<strong>Date Range: </strong>" + fromdate + " - " + todate;
             }
 
         </script>
@@ -258,15 +279,25 @@ if (!isset($_SESSION['login'])) {
                         document.getElementById("content").innerHTML = this.responseText;
                     }
                 };
-                httpAssignments.open("GET", "mysql/content.php?id=" + id, false);
+                httpAssignments.open("GET", "mysql/content.php?id=" + assignment_id, false);
                 httpAssignments.send();
             }
 
             function print_teachers_list() {
-
+                pdf_date();
                 printJS({
                     documentTitle: 'InDepth - Assignments Tracker',
                     printable: 'teachers-div',
+                    type: 'html',
+                    css: 'assets/css/pdf.css'
+                })
+            }
+
+            function print_assignments_list() {
+                pdf_date();
+                printJS({
+                    documentTitle: "InDepth - Assignments Tracker",
+                    printable: 'assignments-div',
                     type: 'html',
                     css: 'assets/css/pdf.css'
                 })

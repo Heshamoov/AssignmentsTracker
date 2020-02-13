@@ -52,11 +52,25 @@ button {
     border-collapse: collapse;
 }
 
-#current_date {
+.current_date {
     float: right;
     font-size: 12px;
 }
 
 .w3-indigo{
     background-color: #00bcd4;
+}
+
+.school-name{
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+#header-t {
+    width: 100%;
+}
+
+#current_date_t{
+    font-size: 12px;
+
 }

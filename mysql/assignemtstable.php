@@ -2,7 +2,7 @@
      Heshamoov90@Gmail.com -->
 <?php
 
-include ('../config/dbConfig.php');
+include('../config/dbConfig.php');
 
 $id = $_REQUEST["id"];
 $fromdate = $_REQUEST["fromdate"];
@@ -26,15 +26,15 @@ $sql = "SELECT employees.first_name 'employee', employee_positions.name 'positio
         WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d') BETWEEN '$fromdate' AND '$todate'
         AND employees.id = $id 
         ORDER BY date DESC";
-        
-     
+
+
 // echo $sql;
-    
+
 $result = $conn->query($sql);
 
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo  "<thead>
+    echo "<thead>
             <tr class='w3-indigo'>
                 <th>#</th>
                 <th>Date</th>
@@ -43,13 +43,14 @@ if ($result->num_rows > 0) {
                     Title
                 </th>
                 <th>
-<button class='w3-button w3-indigo print-btn w3-hover-red' onclick=printJS({printable:'AssignmentsTable',type:'html',assets:'styles/pdf.assets'})>
-    <i style='font-size:24px' class='fa'>&#xf02f;</i>
+<button class='w3-button w3-indigo print-btn w3-hover-red' 
+onclick = 'print_assignments_list()'>
+<i style='font-size:24px' class='fa'>&#xf02f;</i>
 </button>
                  </th>
             </tr>
             </thead>";
-    
+
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         echo "<tr class='w3-text-black'>
@@ -65,7 +66,7 @@ if ($result->num_rows > 0) {
                 </td>
                 
         </tr>";
-    $rownumber++;
+        $rownumber++;
     }
 } else {
     echo "No Data Found! Try another search.";

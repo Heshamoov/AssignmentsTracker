@@ -55,3 +55,19 @@ p {
 .hidden-element{
     display: none;
 }
+
+
+/*#header-t {*/
+/*    background-color: chocolate;*/
+/*    width: 100%;*/
+/*    font-size: 5px;*/
+/*}*/
+/*#header-t, #header-t td, #header-t th{*/
+/*    border: 1px solid #00bcd4;*/
+/*    border-collapse: collapse;*/
+/*}*/
+
+#current_date_t{
+    float: left;
+    margin-bottom: 0;
+}
