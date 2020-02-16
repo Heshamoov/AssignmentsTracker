@@ -15,12 +15,13 @@ if (!isset($_SESSION['login'])) {
         <title>InDepth Eye</title>
     </head>
 
-    <body onload="initDate(); pdf_date(); current_date();">
+<!--    <body onload="initDate(); pdf_date(); current_date();">-->
+    <body>
     <!--<div id="out"></div>-->
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
             <form action="logout.php" style="float: right;padding-top: 5px; padding-right: 10px;">
-                <button type='submit'` href='logout.php' class="btn btn-danger btn-sm">
+                <button type='submit' href='logout.php' class="btn btn-danger btn-sm">
                     <span class="glyphicon glyphicon-log-out"></span> Log out
                 </button>
             </form>
@@ -35,11 +36,14 @@ if (!isset($_SESSION['login'])) {
                 <th>Track</th>
             </tr>
             <tr>
+                <form target="_blank" action="mysql/print-teachers.php" method="post">
                 <td>
-                    <button id="pp" class='w3-button w3-hover-red'
-                            onclick="print_teachers_list()" accesskey="q">
+
+                    <button type="submit"  class='w3-button w3-hover-red' name="print-teachers-btn"
+                         accesskey="q">
                         <i style="font-size:24px" class="fa">&#xf02f;</i>
                     </button>
+
                 </td>
                 <td>
                     <button class="w3-button w3-white w3-hover-green w3-border" onclick="get_month()">
@@ -55,16 +59,18 @@ if (!isset($_SESSION['login'])) {
                     </button>
                 </td>
                 <td>
-                    <input class="w3-input w3-large" type="date" id="from" value="2018-10-20" onchange="search()"/>
+                    <input name = 'date-from' class="w3-input w3-large" type="date" id="from" value="2018-10-20" onchange="search()"/>
                 </td>
                 <td>
-                    <input class="w3-input w3-large" type="date" id="to" onchange="search()"/>
+                    <input name="date-to" class="w3-input w3-large" type="date" id="to" onchange="search()"/>
                 </td>
                 <td>
                     <button id="submit"
                             class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge"
                             onclick="search()"></button>
                 </td>
+                </form>
+
             </tr>
         </table>
     </div>
@@ -72,30 +78,32 @@ if (!isset($_SESSION['login'])) {
     <div class="w3-row w3-container page-body">
         <div class="w3-quarter left-div" id="teachers-div">
             <table id="header-t" hidden>
+                <thead>
                 <tr>
-                    <td rowspan="3" class="textLeft" id="logoTd">
+                    <td rowspan="3">
                         <img src="assets/img/Alsanawbar-Logo.jpg" width="70" class="logoImage" alt="sanawbar logo">
                     </td>
-                    <td colspan="2"><strong>AL SANAWBAR SCHOOL</strong></td>
+                    <td><strong>AL SANAWBAR SCHOOL</strong></td>
                 </tr>
                 <tr>
-                    <td colspan="2" id="pdf_date_range_t"></td>
+                    <td id="pdf_date_range_t"></td>
                 </tr>
                 <tr>
                     <td>Assignments Tracker - Teachers List</td>
-                    <td><p id="current_date_t"></p></td>
+                    <td colspan="3"><p id="current_date_t"></p></td>
                 </tr>
+                </thead>
             </table>
             <hr>
             <table id="employees-list" class="w3-table-all"></table>
         </div>
 
         <div class="w3-twothird right-div" id="assignments-div">
-
-            <table id="header-a" style="padding-top: 20px; margin-bottom: 30px;" hidden>
+            <table id="header-a" hidden>
+                <thead>
                 <tr>
-                    <td rowspan="3" class="textLeft" id="logoTd">
-                        <img src="assets/img/Alsanawbar-Logo.jpg" width="50" class="logoImage" alt="sanawbar logo">
+                    <td rowspan="3">
+                        <img src="assets/img/Alsanawbar-Logo.jpg" width="70" class="logoImage" alt="sanawbar logo">
                     </td>
                     <td><strong>AL SANAWBAR SCHOOL</strong></td>
                 </tr>
@@ -103,16 +111,12 @@ if (!isset($_SESSION['login'])) {
                     <td id="pdf_date_range_a"></td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <hr style="min-width:100%">
-                    </td>
+                    <td>Assignments Tracker - Teachers List</td>
+                    <td colspan="3"><p id="current_date_t"></p></td>
                 </tr>
-                <tr>
-                    <th colspan="2">Assignments Tracker - Assignments List</th>
-                    <p id="current_date_a"></p>
-                </tr>
+                </thead>
             </table>
-
+            <hr>
             <table id="assignments-list" class="w3-table-all"></table>
         </div>
     </div>
@@ -289,8 +293,9 @@ if (!isset($_SESSION['login'])) {
                     documentTitle: 'InDepth - Assignments Tracker',
                     printable: 'teachers-div',
                     type: 'html',
-                    css: 'assets/css/pdf.css'
-                })
+                    css: 'assets/css/pdf.css',
+                    header: false
+                });
             }
 
             function print_assignments_list() {

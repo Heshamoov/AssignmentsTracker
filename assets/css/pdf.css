@@ -1,6 +1,11 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
 
 table  {
     min-width:50%;
@@ -9,38 +14,70 @@ table  {
 table th {
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #4CAF50;
+  background-color: green;
 }
 
 table tr:nth-child(even){background-color: #f2f2f2;}
 
-p {
-    font-size: 20px;
-    text-align: center;
-}
-button {
-	padding: 0;
-	border: none;
-	background: none;
-}
+/*p {*/
+/*    font-size: 20px;*/
+/*    text-align: center;*/
+/*}*/
 
-.printBtn {
-	visibility: hidden;
-}
 
-#title {
-	width: 100%;
-}
-#title th {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  background-color: #4CAF50;
-  color: white;
-}
+/*.printBtn {*/
+/*	visibility: hidden;*/
+/*}*/
+
+/*#title {*/
+/*	width: 100%;*/
+/*}*/
+/*#title th {*/
+/*  padding-top: 1px;*/
+/*  padding-bottom: 1px;*/
+/*  background-color: #4CAF50;*/
+/*  color: white;*/
+/*}*/
 
 #headerDiv, #current_date{
     display: block;
 }
+
+.left-div{
+    width: 100%;
+}
+
+#header-t, #header-a {
+    display: block;
+    width: 100%;
+}
+
+#header-t, #header-t th, #header-t td, #header-a, #header-a th, #header-a td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+.current_date {
+    float: right;
+    font-size: 12px;
+}
+
+.school-name{
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+
+
+#current_date_a, #current_date_t{
+    font-size: 12px;
+    margin-right: 0;
+    float: right;
+    right: 0;
+    background-color: #00bcd4;
+}
+
 
 #employees-list{
     width: 60%;
@@ -50,27 +87,4 @@ button {
 #employees-list, #employees-list th, #employees-list td{
     border: 1px solid black;
     border-collapse: collapse;
-}
-
-.current_date {
-    float: right;
-    font-size: 12px;
-}
-
-.w3-indigo{
-    background-color: #00bcd4;
-}
-
-.school-name{
-    font-weight: bold;
-    color: #4CAF50;
-}
-
-#header-t {
-    width: 100%;
-}
-
-#current_date_t{
-    font-size: 12px;
-
 }
