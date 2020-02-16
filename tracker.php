@@ -117,7 +117,27 @@ if (!isset($_SESSION['login'])) {
                 </thead>
             </table>
             <hr>
-            <table id="assignments-list" class="w3-table-all"></table>
+
+
+
+            <form  target="_blank"  action="mysql/assignments-print.php" method="post">
+            <table id="assignments-list" class="w3-table-all">
+
+
+
+
+
+
+
+
+
+            </table>
+            </form>
+
+
+
+
+
         </div>
     </div>
 

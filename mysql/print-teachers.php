@@ -29,7 +29,7 @@ class PDF extends FPDF
         $this->Ln(7);
         $this->Cell(0, 0, 'Al AIN - U.A.E', 0, 2, 'C');
         $this->Ln(5);
-        $this->Cell(0, 0, 'ASSIGNMENT TRACKER REPORT', 0, 2, 'C');
+        $this->Cell(0, 0, 'ASSIGNMENT TRACKER REPORT',   0, 2, 'C');
         $this->SetLineWidth(0.2);
         $this->Line(10, 52, 200, 52);
         $this->SetFont('times', 'B', 10);

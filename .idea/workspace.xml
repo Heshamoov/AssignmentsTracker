@@ -1,126 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c35664c9-7a01-469a-985b-0b88b4ddcd8c" name="Default Changelist" comment="Bug fixes">
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/FAQ.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/changelog.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/__construct.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/acceptpagebreak.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/addfont.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/addlink.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/addpage.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/aliasnbpages.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/cell.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/close.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/error.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/footer.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/getpageheight.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/getpagewidth.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/getstringwidth.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/getx.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/gety.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/header.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/image.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/index.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/line.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/link.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/ln.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/multicell.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/output.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/pageno.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/rect.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setauthor.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setautopagebreak.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setcompression.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setcreator.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setdisplaymode.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setdrawcolor.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setfillcolor.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setfont.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setfontsize.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setkeywords.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setleftmargin.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setlinewidth.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setlink.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setmargins.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setrightmargin.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setsubject.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/settextcolor.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/settitle.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/settopmargin.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setx.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/setxy.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/sety.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/text.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/doc/write.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/courier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/courierb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/courierbi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/courieri.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/helvetica.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/helveticab.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/helveticabi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/helveticai.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/symbol.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/times.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/timesb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/timesbi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/timesi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/font/zapfdingbats.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/fpdf.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/fpdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/install.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/license.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1250.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1251.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1252.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1253.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1254.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1255.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1257.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp1258.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/cp874.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-1.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-11.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-15.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-16.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-2.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-4.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-5.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-7.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/iso-8859-9.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/koi8-r.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/koi8-u.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/makefont.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/makefont/ttfparser.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/20k_c1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/20k_c2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/calligra.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/calligra.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/calligra.z" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/countries.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/index.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/makefont.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto1.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto1.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto2.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto3.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto3.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto4.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto4.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto5.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto5.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto6.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto6.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto7.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf/tutorial/tuto7.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fpdf182.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/print-teachers.php" afterDir="false" />
+    <list default="true" id="c35664c9-7a01-469a-985b-0b88b4ddcd8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mysql/assignments-print.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/pdf.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/pdf.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/assignemtstable.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/assignemtstable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tracker.php" beforeDir="false" afterPath="$PROJECT_DIR$/tracker.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,7 +151,7 @@
       <workItem from="1581499288052" duration="1451000" />
       <workItem from="1581503761518" duration="4513000" />
       <workItem from="1581570702124" duration="12020000" />
-      <workItem from="1581827974741" duration="5486000" />
+      <workItem from="1581827974741" duration="7537000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes">
       <created>1581508215484</created>
@@ -283,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581574352715</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Teachers List PDF">
+      <created>1581833585005</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581833585005</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +186,8 @@
     <MESSAGE value="Release V2.0" />
     <MESSAGE value="Add users" />
     <MESSAGE value="Bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes" />
+    <MESSAGE value="Teachers List PDF" />
+    <option name="LAST_COMMIT_MESSAGE" value="Teachers List PDF" />
   </component>
   <component name="WindowStateProjectService">
     <state x="220" y="182" key="#CLI_Interpreters" timestamp="1581499094660">
@@ -314,10 +206,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="94" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581505545710" />
-    <state x="278" y="126" key="CommitChangelistDialog2" timestamp="1581575685999">
+    <state x="278" y="126" key="CommitChangelistDialog2" timestamp="1581833582819">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="278" y="126" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581575685999" />
+    <state x="278" y="126" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581833582819" />
     <state width="1237" height="328" key="GridCell.Tab.0.bottom" timestamp="1581831131073">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -354,14 +246,14 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581505583767" />
-    <state x="474" y="459" key="NewPhpFileDialog" timestamp="1581829768523">
+    <state x="474" y="459" key="NewPhpFileDialog" timestamp="1581834068610">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="474" y="459" key="NewPhpFileDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581829768523" />
-    <state x="232" y="264" key="Vcs.Push.Dialog.v2" timestamp="1581508218528">
+    <state x="474" y="459" key="NewPhpFileDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581834068610" />
+    <state x="232" y="264" key="Vcs.Push.Dialog.v2" timestamp="1581833588051">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="232" y="264" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581508218528" />
+    <state x="232" y="264" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581833588051" />
     <state x="341" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1581827987966">
       <screen x="0" y="30" width="1280" height="994" />
     </state>

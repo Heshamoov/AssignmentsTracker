@@ -43,8 +43,10 @@ if ($result->num_rows > 0) {
                     Title
                 </th>
                 <th>
-<button class='w3-button w3-indigo print-btn w3-hover-red' 
-onclick = 'print_assignments_list()'>
+                <input hidden name='to' value=' $todate '>
+                <input hidden name='from' value=' $fromdate '>
+                <input hidden name='empid' value=' $id '>
+<button  type='submit' name='assignment' class='w3-button w3-indigo print-btn w3-hover-red'>
 <i style='font-size:24px' class='fa'>&#xf02f;</i>
 </button>
                  </th>
