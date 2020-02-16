@@ -2,6 +2,8 @@
 include('../config/dbConfig.php');
 include_once('../lib/fpdf/fpdf.php');
 session_start();
+date_default_timezone_set('Asia/Dubai');
+
 
 if (isset($_POST['print-teachers-btn'])) {
     $from = $_POST['date-from'];
