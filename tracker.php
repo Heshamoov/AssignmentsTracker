@@ -15,8 +15,7 @@ if (!isset($_SESSION['login'])) {
         <title>InDepth Eye</title>
     </head>
 
-<!--    <body onload="initDate(); pdf_date(); current_date();">-->
-    <body>
+    <body onload="initDate(); pdf_date(); current_date();">
     <!--<div id="out"></div>-->
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
@@ -29,22 +28,13 @@ if (!isset($_SESSION['login'])) {
 
         <table class="w3-table-all w3-centered w3-card-4 user-options">
             <tr class="w3-indigo">
-                <th>Print</th>
                 <th>Simple Track</th>
                 <th>From</th>
                 <th>To</th>
                 <th>Track</th>
+                <th>Print</th>
             </tr>
             <tr>
-                <form target="_blank" action="mysql/print-teachers.php" method="post">
-                <td>
-
-                    <button type="submit"  class='w3-button w3-hover-red' name="print-teachers-btn"
-                         accesskey="q">
-                        <i style="font-size:24px" class="fa">&#xf02f;</i>
-                    </button>
-
-                </td>
                 <td>
                     <button class="w3-button w3-white w3-hover-green w3-border" onclick="get_month()">
                         This Month
@@ -58,17 +48,24 @@ if (!isset($_SESSION['login'])) {
                         Today
                     </button>
                 </td>
-                <td>
-                    <input name = 'date-from' class="w3-input w3-large" type="date" id="from" value="2018-10-20" onchange="search()"/>
-                </td>
-                <td>
-                    <input name="date-to" class="w3-input w3-large" type="date" id="to" onchange="search()"/>
-                </td>
-                <td>
-                    <button id="submit"
-                            class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge"
-                            onclick="search()"></button>
-                </td>
+
+                <form target="_blank" action="mysql/print-teachers.php" method="post">
+                    <td>
+                        <input name='date-from' class="w3-input w3-large" type="date" id="from" value="2018-10-20"
+                               onchange="search()"/>
+                    </td>
+                    <td>
+                        <input name="date-to" class="w3-input w3-large" type="date" id="to" onchange="search()"/>
+                    </td>
+                    <td>
+                        <button id="submit" class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge"
+                                onclick="search()"></button>
+                    </td>
+                    <td>
+                        <button type="submit" class='w3-button w3-hover-red' name="print-teachers-btn">
+                            <i style="font-size:24px" class="fa">&#xf02f;</i>
+                        </button>
+                    </td>
                 </form>
 
             </tr>
@@ -117,27 +114,9 @@ if (!isset($_SESSION['login'])) {
                 </thead>
             </table>
             <hr>
-
-
-
-            <form  target="_blank"  action="mysql/assignments-print.php" method="post">
-            <table id="assignments-list" class="w3-table-all">
-
-
-
-
-
-
-
-
-
-            </table>
+            <form target="_blank" action="mysql/assignments-print.php" method="post">
+                <table id="assignments-list" class="w3-table-all"></table>
             </form>
-
-
-
-
-
         </div>
     </div>
 

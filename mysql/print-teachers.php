@@ -4,7 +4,6 @@ include_once('../lib/fpdf/fpdf.php');
 session_start();
 date_default_timezone_set('Asia/Dubai');
 
-
 if (isset($_POST['print-teachers-btn'])) {
     $from = $_POST['date-from'];
     $_SESSION['from'] = $from;
@@ -15,8 +14,6 @@ if (isset($_POST['print-teachers-btn'])) {
 
 class PDF extends FPDF
 {
-
-
 // Page header
     public function Header()
     {
@@ -31,12 +28,12 @@ class PDF extends FPDF
         $this->Ln(7);
         $this->Cell(0, 0, 'Al AIN - U.A.E', 0, 2, 'C');
         $this->Ln(5);
-        $this->Cell(0, 0, 'ASSIGNMENT TRACKER REPORT',   0, 2, 'C');
+        $this->Cell(0, 0, 'ASSIGNMENT TRACKER REPORT', 0, 2, 'C');
         $this->SetLineWidth(0.2);
         $this->Line(10, 52, 200, 52);
         $this->SetFont('times', 'B', 10);
         $this->Ln(15);
-        $this->Cell(0, 0, 'Assignments From: '. $_SESSION['from'] .' - To: ' .$_SESSION['to'], 0, 1, 'C');
+        $this->Cell(0, 0, 'Assignments From: ' . $_SESSION['from'] . ' - To: ' . $_SESSION['to'], 0, 1, 'C');
         $this->Ln(10);
     }
 
@@ -55,14 +52,13 @@ class PDF extends FPDF
         $this->Cell(0, 10, 'Printed on ' . $date, 0, 0, 'R');
 
     }
-
 }
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('times', '', 10);
-$pdf->SetFillColor(230,230,230);
+$pdf->SetFillColor(230, 230, 230);
 
 $search = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
         employee_departments.name 'dept', subjects.name 'subject',
@@ -96,7 +92,7 @@ if ($searchResult->num_rows > 0) {
         }
 
         $pdf->Cell(0, 8, $row['employee'], 1, '', 'L');
-        $pdf->Cell(0, 8,  $row['count']."  ", 1, '1', 'R');
+        $pdf->Cell(0, 8, $row['count'] . "  ", 1, '1', 'R');
     }
 
 } else {

@@ -5,15 +5,6 @@ include_once('../lib/tcpdf/tcpdf.php');
 session_start();
 date_default_timezone_set('Asia/Dubai');
 
-
-if (isset($_POST['assignment'])) {
-    $from = $_POST['from'];
-    $_SESSION['from'] = $from;
-    $to = $_POST['to'];
-    $_SESSION['to'] = $to;
-    $emp = $_POST['empid'];
-}
-
 class MYPDF extends TCPDF
 {
 
@@ -41,20 +32,27 @@ class MYPDF extends TCPDF
         $this->Line(10, 52, 200, 52);
         $this->SetFont('times', 'B', 10);
         $this->Ln(15);
+
+
         $this->Cell(0, 0, $this->emp_name, 0, 1, 'C');
-        $this->Cell(0, 0, 'Assignments From: ' . $_SESSION['from'] . ' - To: ' . $_SESSION['to'], 0, 1, 'C');
-        $this->SetFillColor(230, 230, 230);
-        $this->Ln(5);
-        $x = $this->GetX();
-        $y = $this->GetY();
-        $this->MultiCell(10, 8, "#", 1, 'C', 1);
-        $this->SetXY($x + 10, $y);
-        $this->MultiCell(25, 8, "Date", 1, 'C', 1);
-        $this->SetXY($x + 35, $y);
-        $this->MultiCell(35, 8, "Grade", 1, 'C', 1);
-        $this->SetXY($x + 70, $y);
-        $this->MultiCell(0, 8, "Title", 1, 'C', 1);
-        $this->Ln(5);
+        if (isset($_POST['assignment'])) {
+
+            $this->Cell(0, 0, 'Assignments From: ' . $_SESSION['from'] . ' - To: ' . $_SESSION['to'], 0, 1, 'C');
+            $this->SetFillColor(230, 230, 230);
+            $this->Ln(5);
+            $x = $this->GetX();
+            $y = $this->GetY();
+
+
+            $this->MultiCell(10, 8, "#", 1, 'C', 1);
+            $this->SetXY($x + 10, $y);
+            $this->MultiCell(25, 8, "Date", 1, 'C', 1);
+            $this->SetXY($x + 35, $y);
+            $this->MultiCell(35, 8, "Grade", 1, 'C', 1);
+            $this->SetXY($x + 70, $y);
+            $this->MultiCell(0, 8, "Title", 1, 'C', 1);
+            $this->Ln(5);
+        }
     }
 
 // Page footer
@@ -74,44 +72,52 @@ class MYPDF extends TCPDF
     }
 
 
-
 }
 
-$pdf = new MYPDF();
+
+if (isset($_POST['assignment'])) {
+    $from = $_POST['from'];
+    $_SESSION['from'] = $from;
+    $to = $_POST['to'];
+    $_SESSION['to'] = $to;
+    $emp = $_POST['empid'];
 
 
-$sql = "SELECT first_name from employees where id = '$emp'";
+    $pdf = new MYPDF();
+
+
+    $sql = "SELECT first_name from employees where id = '$emp'";
 //echo $sql;
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $pdf->setEmpName($row['first_name']);
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $pdf->setEmpName($row['first_name']);
+        }
     }
-}
 
 
-$pdf->SetTitle('Assignments');
-$pdf->SetMargins(PDF_MARGIN_LEFT, 83, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    $pdf->SetTitle('Assignments');
+    $pdf->SetMargins(PDF_MARGIN_LEFT, 83, PDF_MARGIN_RIGHT);
+    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 // set auto page breaks
-$pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+    $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 // set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-    require_once(dirname(__FILE__) . '/lang/eng.php');
-    $pdf->setLanguageArray($l);
-}
+    if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
+        require_once(dirname(__FILE__) . '/lang/eng.php');
+        $pdf->setLanguageArray($l);
+    }
 
-$pdf->setFontSubsetting(true);
-$pdf->SetFont('freeserif', '', 10, '', true);
+    $pdf->setFontSubsetting(true);
+    $pdf->SetFont('freeserif', '', 10, '', true);
 
-$pdf->AddPage();
-$pdf->SetY(83);
+    $pdf->AddPage();
+    $pdf->SetY(83);
 
 
-$sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
+    $sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
         employee_departments.name 'dept', subjects.name 'subject',
         assignments.title 'title', assignments.employee_id id,
         CONVERT(assignments.created_at, Date) 'date', courses.course_name 'course', batches.name 'section',
@@ -129,26 +135,78 @@ $sql = "SELECT employees.first_name 'employee', employee_positions.name 'positio
         AND employees.id = $emp 
         ORDER BY date DESC";
 
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
 
-$rownumber = 1;
-if ($result->num_rows > 0) {
-
-
-    $First_line = "";
-    while ($row = $result->fetch_assoc()) {
+    $rownumber = 1;
+    if ($result->num_rows > 0) {
 
 
-        $pdf->Cell(10, 8, $rownumber, 1, '', 'L');
-        $pdf->Cell(25, 8, $row['date'], 1, '', 'L');
-        $pdf->Cell(35, 8, $row['course'] . '-' . $row['section'], 1, '', 'L');
-        $pdf->Cell(0, 8, $row['title'], 1, '1', 'C');
-        $rownumber++;
+        $First_line = "";
+        while ($row = $result->fetch_assoc()) {
+
+
+            $pdf->Cell(10, 8, $rownumber, 1, '', 'L');
+            $pdf->Cell(25, 8, $row['date'], 1, '', 'L');
+            $pdf->Cell(35, 8, $row['course'] . '-' . $row['section'], 1, '', 'L');
+            $pdf->Cell(0, 8, $row['title'], 1, '1', 'C');
+            $rownumber++;
+        }
+    } else {
+
+        $pdf->Cell(10, 8, 'No Data Found! Try another search.', '', '', 'L');
     }
-} else {
+    $conn->close();
 
-    $pdf->Cell(10, 8, 'No Data Found! Try another search.', '', '', 'L');
+    $pdf->Output('assignments.pdf', 'I');
 }
-$conn->close();
 
-$pdf->Output('assignments.pdf', 'I');
+if (isset($_POST['assignment-detail'])) {
+
+    $assignment = $_POST['assignment_id'];
+
+    $pdf = new MYPDF();
+    $pdf->SetTitle('Assignments');
+    $pdf->SetMargins(PDF_MARGIN_LEFT, 60, PDF_MARGIN_RIGHT);
+    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+// set auto page breaks
+    $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+// set image scale factor
+    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+    if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
+        require_once(dirname(__FILE__) . '/lang/eng.php');
+        $pdf->setLanguageArray($l);
+    }
+    $pdf->setFontSubsetting(true);
+    $pdf->SetFont('freeserif', '', 10, '', true);
+
+
+    $pdf->AddPage();
+    $pdf->SetFillColor(230, 230, 230);
+
+
+    $sql = "select subjects.name subject, title, content, duedate, assignments.created_at created, employees.first_name teacher from assignments
+            inner join subjects on assignments.subject_id = subjects.id
+            inner join employees on assignments.employee_id = employees.id
+            where assignments.id = $assignment;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $pdf->Cell(0, 10, 'Assignment By'.$row['teacher'], '', '1', 'C');
+            $pdf->Cell(0, 10, $row['subject'], '', '1', 'C');
+            $pdf->SetFont('freeserif', 'B', 14, '', true);
+            $pdf->MultiCell(0, 10, $row['title'], 1, 'C', 1);
+            $pdf->SetFont('freeserif', '', 10, '', true);
+            $pdf->Cell(30, 10, 'Description', 1, '', 'L');
+            $pdf->Cell(0, 10, $row['content'], 1, '1', 'C');
+            $pdf->Cell(30, 10, 'Posted on', 1, '', 'L');
+            $pdf->Cell(0, 10, date("d-m-Y", strtotime($row['created'])), 1, '1', 'C');
+            $pdf->Cell(30, 10, 'Due on', 1, '', 'L');
+            $pdf->Cell(0, 10, date("d-m-Y", strtotime($row['duedate'])), 1, '1', 'C');
+        }
+    }
+
+
+    $pdf->Output('assignments.pdf', 'I');
+}

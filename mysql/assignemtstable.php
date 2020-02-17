@@ -53,7 +53,6 @@ if ($result->num_rows > 0) {
                  </th>
             </tr>
             </thead>";
-
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         echo "<tr class='w3-text-black'>
@@ -63,8 +62,9 @@ if ($result->num_rows > 0) {
                 </td>
                 <td align='left'>$row[course] - $row[section]</td>
                 <td colspan=2 style='text-align: right;'>
-<button class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[assignment_id])'>
-                $row[title] - $row[assignment_id]
+                <input hidden name='assignment_id' value='$row[assignment_id]'>
+<button type='submit' name='assignment-detail' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[assignment_id])'>
+                $row[title] 
                 </button>
                 </td>
                 
