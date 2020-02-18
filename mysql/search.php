@@ -4,12 +4,12 @@
 
 include ('../config/dbConfig.php');
 
-$fromdate = $_REQUEST["fromdate"];
-$todate = $_REQUEST["todate"];
+$from_date = $_REQUEST["from_date"];
+$to_date = $_REQUEST["to_date"];
 
-$search = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
+$search = "SELECT employees.first_name 'employee', employee_positions.name 'position', employees.id 'employee_id',
         employee_departments.name 'dept', subjects.name 'subject',
-        assignments.title 'title', count(assignments.title) count, assignments.employee_id id,
+        assignments.title 'title', count(assignments.title) count, assignments.employee_id 'assignment_id',
         CONVERT(assignments.created_at, Date) 'date'
         FROM ((((
             employee_departments
@@ -19,7 +19,7 @@ $search = "SELECT employees.first_name 'employee', employee_positions.name 'posi
                             INNER JOIN subjects ON assignments.subject_id = subjects.id) 
         WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d')
                 BETWEEN
-                '$fromdate' AND '$todate'
+                '$from_date' AND '$to_date'
         GROUP BY assignments.employee_id
         ORDER BY `dept`, `count` DESC";
 
@@ -44,7 +44,7 @@ if ($searchResult->num_rows > 0) {
         }
         echo "<td class='w3-center'>
                     <button class='w3-button w3-ripple w3-hover-green' data-toggle='popover' data-trigger='focus'
-                    onclick='assignments($row[id])'>$row[employee] - $row[count]</button>
+                    onclick='assignments($row[employee_id])'>$row[employee] - $row[count]</button>
               </td>
             </tr>";
     }
