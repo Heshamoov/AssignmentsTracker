@@ -53,6 +53,7 @@
         <option value="Hesham &lt;heshamoov90@gmail.com&gt;" />
       </list>
     </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="new_mark" />
@@ -233,10 +234,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="390" y="338" key="#com.intellij.fileTypes.FileTypeChooser/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582004819370" />
-    <state x="278" y="126" key="CommitChangelistDialog2" timestamp="1582006574676">
+    <state x="278" y="126" key="CommitChangelistDialog2" timestamp="1582007149202">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="278" y="126" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582006574676" />
+    <state x="278" y="126" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582007149202" />
     <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1582004547960">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -273,6 +274,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581505583767" />
+    <state x="352" y="245" key="MultipleFileMergeDialog" timestamp="1582007118057">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state x="352" y="245" key="MultipleFileMergeDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582007118057" />
     <state x="474" y="459" key="NewPhpFileDialog" timestamp="1581834068610">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -281,10 +286,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="454" y="242" key="RollbackChangesDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1581851075804" />
-    <state x="232" y="264" key="Vcs.Push.Dialog.v2" timestamp="1582006579610">
+    <state x="232" y="264" key="Vcs.Push.Dialog.v2" timestamp="1582007067801">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="232" y="264" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582006579610" />
+    <state x="232" y="264" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582007067801" />
     <state x="166" y="236" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1581939206531">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
