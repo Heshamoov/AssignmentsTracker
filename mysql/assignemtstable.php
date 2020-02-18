@@ -42,6 +42,7 @@ if ($result->num_rows > 0) {
                     Title
                 </th>
                 <th>
+<form target='_blank' action='mysql/assignments-print.php' method='post'>                
                 <input hidden name='from_date' value='$from_date'>                
                 <input hidden name='to_date' value='$to_date'>
                 <input hidden name='employee_id' value='$employee_id'>
@@ -49,6 +50,7 @@ if ($result->num_rows > 0) {
 <button  type='submit' name='print-assignments-list' class='w3-button w3-indigo print-btn w3-hover-red'>
 <i style='font-size:24px' class='fa'>&#xf02f;</i>
 </button>
+</form>
                  </th>
             </tr>
             </thead>";

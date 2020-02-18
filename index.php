@@ -121,7 +121,7 @@ if (isset($_SESSION['login']))
                         Assignemnts Tracker
                     </span>
                     <?php
-                    if (isset($_SESSION['notloggedin'])) {
+                    if (isset($_SESSION['notlogge\din'])) {
                         ?>
                         <div id='noaccess' class="alert alert-warning wrap-input100  m-b-12">
                             <strong>Not Logged in!</strong> Please login first to continue.

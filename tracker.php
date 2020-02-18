@@ -15,7 +15,7 @@ if (!isset($_SESSION['login'])) {
         <title>InDepth Eye</title>
     </head>
 
-    <body onload="initDate(); pdf_date(); current_date();">
+    <body onload="initDate();">
     <!--<div id="out"></div>-->
     <div id='page-title' class="w3-container">
         <h2 class="w3-center w3-wide">Assignments Tracker - Al Sanawbar School
@@ -75,49 +75,11 @@ if (!isset($_SESSION['login'])) {
 
     <div class="w3-row w3-container page-body">
         <div class="w3-quarter left-div" id="teachers-div">
-            <table id="header-t" hidden>
-                <thead>
-                <tr>
-                    <td rowspan="3">
-                        <img src="assets/img/Alsanawbar-Logo.jpg" width="70" class="logoImage" alt="sanawbar logo">
-                    </td>
-                    <td><strong>AL SANAWBAR SCHOOL</strong></td>
-                </tr>
-                <tr>
-                    <td id="pdf_date_range_t"></td>
-                </tr>
-                <tr>
-                    <td>Assignments Tracker - Teachers List</td>
-                    <td colspan="3"><p id="current_date_t"></p></td>
-                </tr>
-                </thead>
-            </table>
-            <hr>
             <table id="employees-list" class="w3-table-all"></table>
         </div>
 
         <div class="w3-twothird right-div" id="assignments-div">
-            <table id="header-a" hidden>
-                <thead>
-                <tr>
-                    <td rowspan="3">
-                        <img src="assets/img/Alsanawbar-Logo.jpg" width="70" class="logoImage" alt="sanawbar logo">
-                    </td>
-                    <td><strong>AL SANAWBAR SCHOOL</strong></td>
-                </tr>
-                <tr>
-                    <td id="pdf_date_range_a"></td>
-                </tr>
-                <tr>
-                    <td>Assignments Tracker - Teachers List</td>
-                    <td colspan="3"><p id="current_date_t"></p></td>
-                </tr>
-                </thead>
-            </table>
-            <hr>
-
             <table id="assignments-list" class="w3-table-all"></table>
-
         </div>
     </div>
 
@@ -213,13 +175,6 @@ if (!isset($_SESSION['login'])) {
                 // document.getElementById("out").innerHTML = "Today " + new Date().toUTCString();
             }
 
-            function current_date() {
-                let today = new Date().toISOString().substr(0, 10);
-                document.getElementById("current_date_t").innerHTML = "Printing Date: " + today;
-                document.getElementById("current_date_a").innerHTML = "Printing Date: " + today;
-
-            }
-
             function week() {
                 let curr = new Date; // get current date
                 let first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
@@ -236,25 +191,6 @@ if (!isset($_SESSION['login'])) {
                 // document.getElementById("out").innerHTML = "From " + new Date(date.getFullYear(), date.getMonth(), 2).toUTCString();
                 search();
             }
-
-
-            function pdf_date() {
-                let date = new Date($('#from').val());
-                day = date.getDate();
-                month = date.getMonth() + 1;
-                year = date.getFullYear();
-                let fromdate = year + '-' + month + '-' + day;
-
-                date = new Date($('#to').val());
-                day = date.getDate();
-                month = date.getMonth() + 1;
-                year = date.getFullYear();
-                let todate = year + '-' + month + '-' + day;
-
-                document.getElementById('pdf_date_range_a').innerHTML = "<strong>Date Range: </strong>" + fromdate + " - " + todate;
-                document.getElementById('pdf_date_range_t').innerHTML = "<strong>Date Range: </strong>" + fromdate + " - " + todate;
-            }
-
         </script>
 
 
