@@ -58,7 +58,8 @@ if (!isset($_SESSION['login'])) {
                         <input name="date-to" class="w3-input w3-large" type="date" id="to" onchange="search()"/>
                     </td>
                     <td>
-                        <button id="submit" class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge"
+                        <button id="submit"
+                                class="w3-button w3-ripple w3-hover-green w3-round-xxlarge fa fa-search w3-xlarge"
                                 onclick="search()"></button>
                     </td>
                     <td>
@@ -114,9 +115,9 @@ if (!isset($_SESSION['login'])) {
                 </thead>
             </table>
             <hr>
-            <form target="_blank" action="mysql/assignments-print.php" method="post">
-                <table id="assignments-list" class="w3-table-all"></table>
-            </form>
+
+            <table id="assignments-list" class="w3-table-all"></table>
+
         </div>
     </div>
 
@@ -132,23 +133,17 @@ if (!isset($_SESSION['login'])) {
                     <div id="popover-content">
                         <form class="form-inline" role="form">
                             <div class="form-group">
-                                <p id="content">Hello</p>
+                                <p id="content">No Date</p>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="modal-footer">
-                        <button id="print" type="button" class="btn btn-primary btn-sm"
-                                onclick="printJS({
-                printable: 'assignment',
-                type: 'html',
-                ignoreElements: ['close','print'],
-                targetStyles: '*',
-                css: 'styles/pdf.css'
-            })">
-                            PRINT
-                        </button>
+<form target='_blank' action='mysql/assignments-print.php' method='post'>
+    <input hidden id="assignment_id_input" name="assignment_id">
+    <button id="print" type="submit" name="print-assignment" class="btn btn-primary btn-sm">PRINT</button>
+</form>
                     </div>
                 </div>
             </div>
@@ -166,13 +161,13 @@ if (!isset($_SESSION['login'])) {
                 day = date.getDate();
                 month = date.getMonth() + 1;
                 year = date.getFullYear();
-                let fromdate = year + '-' + month + '-' + day;
+                let from_date = year + '-' + month + '-' + day;
 
                 date = new Date($('#to').val());
                 day = date.getDate();
                 month = date.getMonth() + 1;
                 year = date.getFullYear();
-                let todate = year + '-' + month + '-' + day;
+                let to_date = year + '-' + month + '-' + day;
 
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
@@ -180,24 +175,24 @@ if (!isset($_SESSION['login'])) {
                         document.getElementById("employees-list").innerHTML = this.responseText;
                     }
                 };
-                httpAssignments.open("GET", "mysql/search.php?fromdate=" + fromdate + "&todate=" + todate, false);
+                httpAssignments.open("GET", "mysql/search.php?from_date=" + from_date + "&to_date=" + to_date, false);
                 httpAssignments.send();
             }
 
 
-            function assignments(id) {
+            function assignments(employee_id) {
                 let date = new Date($('#from').val());
                 day = date.getDate();
                 month = date.getMonth() + 1;
                 year = date.getFullYear();
-                let fromdate = year + '-' + month + '-' + day;
+                let from_date = year + '-' + month + '-' + day;
 
 
                 date = new Date($('#to').val());
                 day = date.getDate();
                 month = date.getMonth() + 1;
                 year = date.getFullYear();
-                let todate = year + '-' + month + '-' + day;
+                let to_date = year + '-' + month + '-' + day;
 
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
@@ -205,7 +200,7 @@ if (!isset($_SESSION['login'])) {
                         document.getElementById("assignments-list").innerHTML = this.responseText;
                     }
                 };
-                httpAssignments.open("GET", "mysql/assignemtstable.php?id=" + id + "&fromdate=" + fromdate + "&todate=" + todate, false);
+                httpAssignments.open("GET", "mysql/assignemtstable.php?employee_id=" + employee_id + "&from_date=" + from_date + "&to_date=" + to_date, false);
                 httpAssignments.send();
             };
 
@@ -266,6 +261,7 @@ if (!isset($_SESSION['login'])) {
         <!-- Assignment Content -->
         <script type="text/javascript">
             function content(assignment_id) {
+                document.getElementById("assignment_id_input").value = assignment_id;
                 var httpAssignments = new XMLHttpRequest();
                 httpAssignments.onreadystatechange = function () {
                     if (this.readyState === 4) {

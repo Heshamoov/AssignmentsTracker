@@ -4,9 +4,9 @@
 
 include('../config/dbConfig.php');
 
-$id = $_REQUEST["id"];
-$fromdate = $_REQUEST["fromdate"];
-$todate = $_REQUEST["todate"];
+$employee_id = $_REQUEST["employee_id"];
+$from_date = $_REQUEST["from_date"];
+$to_date = $_REQUEST["to_date"];
 
 
 $sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
@@ -23,16 +23,15 @@ $sql = "SELECT employees.first_name 'employee', employee_positions.name 'positio
             INNER JOIN batches ON subjects.batch_id = batches.id
             INNER JOIN courses ON batches.course_id = courses.id
             
-        WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d') BETWEEN '$fromdate' AND '$todate'
-        AND employees.id = $id 
+        WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d') BETWEEN '$from_date' AND '$to_date'
+        AND employees.id = $employee_id 
         ORDER BY date DESC";
-
 
 // echo $sql;
 
 $result = $conn->query($sql);
 
-$rownumber = 1;
+$row_number = 1;
 if ($result->num_rows > 0) {
     echo "<thead>
             <tr class='w3-indigo'>
@@ -43,33 +42,33 @@ if ($result->num_rows > 0) {
                     Title
                 </th>
                 <th>
-                <input hidden name='to' value='$todate'>
-                <input hidden name='from' value='$fromdate'>
-                <input hidden name='empid' value='$id'>
+                <input hidden name='from_date' value='$from_date'>                
+                <input hidden name='to_date' value='$to_date'>
+                <input hidden name='employee_id' value='$employee_id'>
                 
-<button  type='submit' name='assignment' class='w3-button w3-indigo print-btn w3-hover-red'>
+<button  type='submit' name='print-assignments-list' class='w3-button w3-indigo print-btn w3-hover-red'>
 <i style='font-size:24px' class='fa'>&#xf02f;</i>
 </button>
                  </th>
             </tr>
             </thead>";
+
     $First_line = "";
     while ($row = $result->fetch_assoc()) {
         echo "<tr class='w3-text-black'>
-                <td>$rownumber</td>
+                <td>$row_number</td>
                 <td>
                 $row[date]
                 </td>
                 <td align='left'>$row[course] - $row[section]</td>
                 <td colspan=2 style='text-align: right;'>
-                <input hidden name='assignment_id' value='$row[assignment_id]'>
-<button type='submit' name='assignment-detail' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[assignment_id])'>
-                $row[title] 
+<button type='submit' name='print-assignment' class='w3-button w3-ripple w3-hover-green w3-round-xxlarge' data-toggle='modal' data-target='#assignment' onclick='content($row[assignment_id])'>
+                $row[title]
                 </button>
                 </td>
                 
         </tr>";
-        $rownumber++;
+        $row_number++;
     }
 } else {
     echo "No Data Found! Try another search.";

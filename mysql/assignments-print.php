@@ -7,7 +7,6 @@ date_default_timezone_set('Asia/Dubai');
 
 class MYPDF extends TCPDF
 {
-
     private $emp_name;
 
     public function setEmpName($value)
@@ -33,10 +32,8 @@ class MYPDF extends TCPDF
         $this->SetFont('times', 'B', 10);
         $this->Ln(15);
 
-
         $this->Cell(0, 0, $this->emp_name, 0, 1, 'C');
-        if (isset($_POST['assignment'])) {
-
+        if (isset($_POST['print-assignments-list'])) {
             $this->Cell(0, 0, 'Assignments From: ' . $_SESSION['from'] . ' - To: ' . $_SESSION['to'], 0, 1, 'C');
             $this->SetFillColor(230, 230, 230);
             $this->Ln(5);
@@ -68,25 +65,21 @@ class MYPDF extends TCPDF
         $this->Cell(10, 10, 'Printed By ' . $_SESSION['name'], 0, 0, 'L');
         $this->Cell(0, 10, 'Page ' . $this->getAliasNumPage() . '/' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->Cell(0, 10, 'Printed on ' . $date, 0, 0, 'R');
-
     }
-
-
 }
 
 
-if (isset($_POST['assignment'])) {
-    $from = $_POST['from'];
+if (isset($_POST['print-assignments-list'])) {
+    $from = $_POST['from_date'];
     $_SESSION['from'] = $from;
-    $to = $_POST['to'];
+    $to = $_POST['to_date'];
     $_SESSION['to'] = $to;
-    $emp = $_POST['empid'];
-
+    $employee_id = $_POST['employee_id'];
+//    echo "Employee ID: " . $employee_id;
 
     $pdf = new MYPDF();
 
-
-    $sql = "SELECT first_name from employees where id = '$emp'";
+    $sql = "SELECT first_name from employees where id = '$employee_id'";
 //echo $sql;
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -117,12 +110,12 @@ if (isset($_POST['assignment'])) {
     $pdf->SetY(83);
 
 
-    $sql = "SELECT employees.first_name 'employee', employee_positions.name 'position', 
+    $sql = "SELECT employees.first_name 'employee', employee_positions.name 'position',
         employee_departments.name 'dept', subjects.name 'subject',
         assignments.title 'title', assignments.employee_id id,
         CONVERT(assignments.created_at, Date) 'date', courses.course_name 'course', batches.name 'section',
         assignments.id 'assignment_id'
-        
+
         FROM employee_departments
             INNER JOIN employees ON employee_departments.id = employees.employee_department_id
             INNER JOIN employee_positions ON employees.employee_position_id = employee_positions.id
@@ -130,9 +123,9 @@ if (isset($_POST['assignment'])) {
             INNER JOIN subjects ON assignments.subject_id = subjects.id
             INNER JOIN batches ON subjects.batch_id = batches.id
             INNER JOIN courses ON batches.course_id = courses.id
-            
+
         WHERE STR_TO_DATE(assignments.created_at,'%Y-%m-%d') BETWEEN '$from' AND '$to'
-        AND employees.id = $emp 
+        AND employees.id = $employee_id
         ORDER BY date DESC";
 
     $result = $conn->query($sql);
@@ -160,9 +153,10 @@ if (isset($_POST['assignment'])) {
     $pdf->Output('assignments.pdf', 'I');
 }
 
-if (isset($_POST['assignment-detail'])) {
+if (isset($_POST['print-assignment'])) {
 
-    $assignment = $_POST['assignment_id'];
+    $assignment_id = $_POST['assignment_id'];
+//    echo "Assignemnt ID: " . $assignment_id;
 
     $pdf = new MYPDF();
     $pdf->SetTitle('Assignments');
@@ -189,17 +183,18 @@ if (isset($_POST['assignment-detail'])) {
     $sql = "select subjects.name subject, title, content, duedate, assignments.created_at created, employees.first_name teacher from assignments
             inner join subjects on assignments.subject_id = subjects.id
             inner join employees on assignments.employee_id = employees.id
-            where assignments.id = $assignment;";
+            where assignments.id = $assignment_id;";
+
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $pdf->Cell(0, 10, 'Assignment By'.$row['teacher'], '', '1', 'C');
+            $pdf->Cell(0, 10, 'Assignment By ' . $row['teacher'], '', '1', 'C');
             $pdf->Cell(0, 10, $row['subject'], '', '1', 'C');
             $pdf->SetFont('freeserif', 'B', 14, '', true);
             $pdf->MultiCell(0, 10, $row['title'], 1, 'C', 1);
             $pdf->SetFont('freeserif', '', 10, '', true);
             $pdf->Cell(30, 10, 'Description', 1, '', 'L');
-            $pdf->Cell(0, 10, $row['content'], 1, '1', 'C');
+            $pdf->MultiCell(0, 10, $row['content'], 1, 'C', '');
             $pdf->Cell(30, 10, 'Posted on', 1, '', 'L');
             $pdf->Cell(0, 10, date("d-m-Y", strtotime($row['created'])), 1, '1', 'C');
             $pdf->Cell(30, 10, 'Due on', 1, '', 'L');

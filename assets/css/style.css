@@ -55,3 +55,8 @@ p {
 .hidden-element{
     display: none;
 }
+
+.form-group{
+    /*background-color: red;*/
+    width: 100%;
+}
