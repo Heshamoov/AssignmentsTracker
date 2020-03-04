@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c35664c9-7a01-469a-985b-0b88b4ddcd8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/online_lesson.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c35664c9-7a01-469a-985b-0b88b4ddcd8c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,7 +100,7 @@
       <workItem from="1582450949441" duration="78000" />
       <workItem from="1582451056046" duration="38000" />
       <workItem from="1582451116331" duration="64000" />
-      <workItem from="1583340969336" duration="153000" />
+      <workItem from="1583340969336" duration="225000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes">
       <created>1581508215484</created>
@@ -175,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582009572352</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Release 4.0">
+      <created>1583341167594</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1583341167594</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,9 +222,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="390" y="338" key="#com.intellij.fileTypes.FileTypeChooser/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582004819370" />
-    <state x="278" y="126" key="CommitChangelistDialog2" timestamp="1582009570463">
-      <screen x="0" y="30" width="1280" height="994" />
+    <state x="-1069" y="163" key="CommitChangelistDialog2" timestamp="1583341165526">
+      <screen x="-1366" y="163" width="1366" height="738" />
     </state>
+    <state x="-1069" y="163" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@-1366.163.1366.738" timestamp="1583341165526" />
     <state x="278" y="126" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582009570463" />
     <state x="420" y="286" key="FileChooserDialogImpl" timestamp="1582451179142">
       <screen x="0" y="30" width="1280" height="994" />
