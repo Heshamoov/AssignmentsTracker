@@ -1,6 +1,5 @@
-<!-- Developed By Hesham Alatrash
-     Heshamoov90@Gmail.com -->
-
+<!-- Developed By Hesham Alatrash-->
+<!-- Heshamoov90@Gmail.com - mail@hesham.info-->
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -25,7 +24,6 @@ if (!isset($_SESSION['login'])) {
                 </button>
             </form>
         </h2>
-
         <table class="w3-table-all w3-centered w3-card-4 user-options">
             <tr class="w3-indigo">
                 <th>Simple Track</th>

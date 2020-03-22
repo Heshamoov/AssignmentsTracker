@@ -1,7 +1,13 @@
 <?php
 session_start();
-if (isset($_SESSION['login']))
+
+if(isset($_COOKIE['user_id']) &&  isset($_COOKIE['user_salt']) && $_SESSION['noaccess'] !=1)
+{
+    header('Location: login.php');
+}
+else if (isset($_SESSION['login']) &&  $_SESSION['noaccess'] !=1) {
     header('Location: tracker.php');
+} else {
 ?>
 
 <!doctype html>
@@ -107,6 +113,7 @@ if (isset($_SESSION['login']))
         };
     </script>
 </head>
+
 <body>
     <input  id="instanceurl" type="hidden" name="instanceurl" value="https://alsanawbar.school/"/>
     <input  id="client_id" type="hidden" value="6f4b0bf73d65d6e15d2c36fde4a91d4a3798dfeb6292f33772dd17d2f9ab3ac0"/>
@@ -118,7 +125,7 @@ if (isset($_SESSION['login']))
             <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
                 <form class="login100-form validate-form flex-sb flex-w" onsubmit = "event.preventDefault();">
                     <span class="login100-form-title p-b-32">
-                        Assignemnts Tracker
+                        Assignments Tracker
                     </span>
                     <?php
                     if (isset($_SESSION['notlogge\din'])) {
@@ -218,3 +225,4 @@ if (isset($_SESSION['login']))
 </body>
 </html>
 
+<?php } ?>

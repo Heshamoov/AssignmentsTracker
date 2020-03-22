@@ -5,7 +5,8 @@ function login() {
     
 require 'config/dbConfig.php';
 
-    $sql = "select users.id user,users.first_name name from users where users.username = '$_POST[user]';";
+    $sql = "select users.id user,users.first_name name from users
+            where users.username = '$_POST[user]';";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         $user = $row['user'];
